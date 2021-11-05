@@ -1,4 +1,4 @@
-public class Piece {
+public class Piece implements Comparable<Piece> {
 
     private int value;
     private int currentPosVal;
@@ -29,4 +29,8 @@ public class Piece {
         return currentPosVal;
     }
 
+    @Override
+    public int compareTo(Piece o) {
+        return 0;
+    }
 }

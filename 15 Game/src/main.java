@@ -2,12 +2,15 @@ public class main {
 
     public static Piece[][] board = new Piece[4][4];
 
+
+
+
+
     public static void main(String[] args) {
         board = createBoard();
         while (!isWin()){
             play();
         }
-
     }
 
     private static Piece[][] createBoard() {
@@ -42,6 +45,10 @@ public class main {
 
     private static boolean swapPosition(int currentPosX, int currentPosY, int currentPosX2, int currentPosY2) {
         try {
+            if(currentPosX-currentPosX2!=1||currentPosX-currentPosX2!=-1||currentPosY-currentPosY2!=1||currentPosY-currentPosY2!=-1){
+                System.out.println("Impossible Move!");
+                return false;
+            }
             Piece tempPiece = board[currentPosX][currentPosY];
             Piece tempPiece2 = board[currentPosX2][currentPosY2];
             board[currentPosX][currentPosY] = tempPiece2;
