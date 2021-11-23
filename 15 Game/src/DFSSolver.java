@@ -1,40 +1,28 @@
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
-
-public class AStarSolver {
+public class DFSSolver {
 
     /**
      * returns a list of boards if it was able to solve it, or else null
+     *
      * @return
      */
-    public List<Board> aStarSolve(Board b, int typeOfHeuristic) throws CloneNotSupportedException {
-        HashMap<Board, Board> predecessor = new HashMap<Board, Board>();
-        HashMap<Board,Integer> depth = new HashMap<Board,Integer>();
-        final HashMap<Board,Integer> score = new HashMap<Board,Integer>();
+    public List<Board> dfsSolver(Board b) throws CloneNotSupportedException {
         Comparator<Board> comparator = new Comparator<Board>() {
             @Override
             public int compare(Board a, Board b) {
-                return score.get(a) - score.get(b);
+                return a.getDepth() - b.getDepth();
             }
         };
+        HashSet<Board> visited = new HashSet<>();
         PriorityQueue<Board> toVisit = new PriorityQueue<Board>(10000,comparator);
-
-        predecessor.put(b, null);
-        depth.put(b,0);
-        if (typeOfHeuristic==0){
-            score.put(b, b.estimateErrorByManhattan());
-        }else{
-            score.put(b, b.estimateErrorByMisplaced());
-        }
+        HashMap<Board, Board> predecessor = new HashMap<Board, Board>();
         toVisit.add(b);
+        predecessor.put(b, null);
         int cnt=0;
         while( toVisit.size() > 0) {
             Board candidate = toVisit.remove();
+            visited.add(candidate);
             cnt++;
             if( cnt % 10000 == 0) {
                 System.out.printf("Considered %,d positions. Queue = %,d\n", cnt, toVisit.size());
@@ -50,26 +38,14 @@ public class AStarSolver {
                 return solution;
             }
             for(Board fp: candidate.allAdjacentPuzzles()) {
-                if( !predecessor.containsKey(fp)) {
+                if( !predecessor.containsKey(fp) ) {
                     predecessor.put(fp,candidate);
-                    depth.put(fp,depth.get(candidate)+1);
-                    if (typeOfHeuristic==0){
-                        int estimate= fp.estimateErrorByManhattan();
-                        score.put(fp, depth.get(candidate)+1 + estimate);
-                    }else{
-                        int estimate= fp.estimateErrorByMisplaced();
-                        score.put(fp, depth.get(candidate)+1 + estimate);
-                    }
-
                     toVisit.add(fp);
                 }
             }
         }
         return null;
     }
-
-
-
 
 
 }

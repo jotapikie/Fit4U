@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Board {
@@ -14,17 +15,27 @@ public class Board {
 
     }
 
-    public int[][] solvedPuzzle;
     public int rows;
     public int columns;
     public int[][] tiles;
     private final int display_width;
-    private TilePos blank;
+    public TilePos blank;
+    private int depth;
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
 
     public Board(int rows, int columns, int[][] tiles) {
         this.tiles = tiles;
         this.rows = rows;
         this.columns = columns;
+        this.depth=0;
         int cnt = 1;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -33,18 +44,9 @@ public class Board {
                 }
             }
         }
-        solvedPuzzle = new int[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                solvedPuzzle[i][j] = cnt;
-                cnt++;
-            }
-        }
-        solvedPuzzle[rows-1][columns-1]=0;
         display_width = Integer.toString(cnt).length();
 
     }
-
 
 
     public Board(int rows, int columns, int[][] tiles, TilePos blank) {
@@ -52,23 +54,26 @@ public class Board {
         this.rows = rows;
         this.columns = columns;
         int cnt = 1;
-        this.blank=blank;
-        solvedPuzzle = new int[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                solvedPuzzle[i][j] = cnt;
-                cnt++;
-            }
-        }
-        solvedPuzzle[rows-1][columns-1]=0;
+        this.blank = blank;
+        display_width = Integer.toString(cnt).length();
+
+    }
+
+    public Board(int rows, int columns, int[][] tiles, TilePos blank, int depth) {
+        this.tiles = tiles;
+        this.rows = rows;
+        this.columns = columns;
+        int cnt = 1;
+        this.blank = blank;
+        this.depth=depth;
         display_width = Integer.toString(cnt).length();
 
     }
 
     public List<TilePos> allTilePos() {
         ArrayList<TilePos> out = new ArrayList<TilePos>();
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < rows; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 out.add(new TilePos(i, j));
             }
         }
@@ -98,23 +103,19 @@ public class Board {
 
     @Override
     public boolean equals(Object o) {
-
-        for (TilePos p : allTilePos()) {
-            if (this.tile(p) != ((Board) o).tile(p)) {
-                return false;
-            }
+        if (o != null && o instanceof Board) {
+            Board node = (Board) o;
+            int[][] board1 = this.tiles;
+            int[][] board2 = node.tiles;
+            return Arrays.deepEquals(board1, board2);
         }
-        return true;
-
+        return false;
     }
+
 
     @Override
     public int hashCode() {
-        int out = 0;
-        for (TilePos p : allTilePos()) {
-            out = (out * rows * columns) + this.tile(p);
-        }
-        return out;
+        return Arrays.deepHashCode(this.tiles);
     }
 
     public void show() {
@@ -153,6 +154,49 @@ public class Board {
         return out;
     }
 
+    public boolean isSolvable() {
+        int i1 = columns * rows;
+        int[] arr = new int[i1];
+        int i = 0;
+        for (int j = 0; j < rows; j++) {
+            for (int k = 0; k < columns; k++) {
+                arr[i] = tiles[j][k];
+                i++;
+            }
+        }
+
+        int inv_count = 0;
+        for (int m = 0; m < rows * columns - 1; m++) {
+            for (int n = m + 1; n < rows * columns; n++) {
+                // count pairs(m, n) such that m appears
+                // before n, but m > n.
+                if (arr[n] != 0 && arr[m] != 0 && arr[m] > arr[n]) {
+                    inv_count++;
+                }
+
+            }
+        }
+
+        if (!getParity(rows)) {
+            return (getParity(inv_count));
+        } else {
+            int pos = blank.x;
+            if (getParity(pos)) {
+                return !(getParity(inv_count));
+            } else {
+                return getParity(inv_count);
+            }
+
+        }
+
+    }
+
+    static boolean getParity(int n) {
+        if (n % 2 == 0)
+            return true;
+        else
+            return false;
+    }
 
     public boolean isValidMove(TilePos p) {
         if ((p.x < 0) || (p.x >= columns)) {
@@ -174,10 +218,8 @@ public class Board {
         assert tiles[blank.x][blank.y] == 0;
         tiles[blank.x][blank.y] = tiles[p.x][p.y];
         tiles[p.x][p.y] = 0;
-        blank=p;
+        blank = p;
     }
-
-
 
 
     /**
@@ -190,22 +232,20 @@ public class Board {
         int[][] matrix = new int[b.rows][b.columns];
         for (int i = 0; i < b.rows; i++) {
             for (int j = 0; j < b.columns; j++) {
-                matrix[i][j]=b.tiles[i][j];
+                matrix[i][j] = b.tiles[i][j];
             }
         }
-        Board out = new Board(b.rows, b.columns, matrix, new Board.TilePos(b.getBlank().x,b.getBlank().y));
+        Board out = new Board(b.rows, b.columns, matrix, new Board.TilePos(b.getBlank().x, b.getBlank().y), b.getDepth()+1);
         out.move(p);
         return out;
     }
-
-
 
 
     public int numberMisplacedTiles() {
         int wrong = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if ((tiles[i][j] > 0) && (tiles[i][j] != solvedPuzzle[i][j])) {
+                if ((tiles[i][j] > 0) && (tiles[i][j] != main.solvedPuzzle[i][j])) {
                     wrong++;
                 }
             }
@@ -221,7 +261,6 @@ public class Board {
     public List<Board> allAdjacentPuzzles() throws CloneNotSupportedException {
         List<Board> out = new ArrayList<>();
         for (TilePos move : allValidMoves()) {
-
             out.add(moveClone(move, this));
         }
         return out;
@@ -235,13 +274,13 @@ public class Board {
      */
     public int manhattanDistance() {
         int sum = 0;
+        Board solvedPuzzle = new Board(this.rows, this.columns, main.solvedPuzzle);
         for (TilePos p : allTilePos()) {
             int val = tile(p);
-            if (val > 0) {
-                Board.TilePos correct = new Board(this.rows, this.columns, solvedPuzzle).whereIs(val);
-                sum += Math.abs(correct.x = p.x);
-                sum += Math.abs(correct.y = p.y);
-            }
+            TilePos correct= solvedPuzzle.whereIs(val);
+            sum += Math.abs(correct.x = p.x);
+            sum += Math.abs(correct.y = p.y);
+
         }
         return sum;
     }

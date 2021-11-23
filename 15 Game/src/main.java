@@ -13,9 +13,9 @@ public class main {
     static final String SMA_OPTION="--sma";
     static final int MANHANTAN_HEURISTIC=0;
     static final int ERROR_HEURISTIC=1;
+    static final int[][] solvedPuzzle = new int[4][4];
 
     public static void main(String[] args) throws CloneNotSupportedException {
-
         int rows;
         int columns;
         int in;
@@ -48,42 +48,63 @@ public class main {
             }
         }
 
+        int cnt=1;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                solvedPuzzle[i][j] = cnt;
+                cnt++;
+            }
+        }
 
+        solvedPuzzle[rows - 1][columns - 1] = 0;
+        Board solvedBoard= new Board(columns,rows,solvedPuzzle);
+        solvedBoard.show();
         Board mainBoard= new Board(columns,rows,inputTiles);
         mainBoard.show();
 
         if (args[0].equals(DFS_OPTION)||args[0].equals(BFS_OPTION)||args[0].equals(IDFS_OPTION)){
-            String param=args[1].substring(1,args[1].length()-1);
-            String[] order=param.split(",");
-            for (String s : order) {
-                switch (s) {
-                    case "U":
-                        for (Board.TilePos p : mainBoard.allValidMoves()) {
-                            if (mainBoard.getBlank().y < p.y) {
-                                mainBoard.move(p);
+            if (args.length!=1){
+                String param=args[1].substring(1,args[1].length()-1);
+                String[] order=param.split(",");
+                for (String s : order) {
+                    switch (s) {
+                        case "U":
+                            for (Board.TilePos p : mainBoard.allValidMoves()) {
+                                if (mainBoard.getBlank().y < p.y) {
+                                    mainBoard.move(p);
+                                }
                             }
-                        }
-                    case "D":
-                        for (Board.TilePos p : mainBoard.allValidMoves()) {
-                            if (mainBoard.getBlank().y > p.y) {
-                                mainBoard.move(p);
+                        case "D":
+                            for (Board.TilePos p : mainBoard.allValidMoves()) {
+                                if (mainBoard.getBlank().y > p.y) {
+                                    mainBoard.move(p);
+                                }
                             }
-                        }
-                    case "R":
-                        for (Board.TilePos p: mainBoard.allValidMoves()){
-                            if(mainBoard.getBlank().x<p.x){
-                                mainBoard.move(p);
+                        case "R":
+                            for (Board.TilePos p: mainBoard.allValidMoves()){
+                                if(mainBoard.getBlank().x<p.x){
+                                    mainBoard.move(p);
+                                }
                             }
-                        }
-                    case "L":
-                        for (Board.TilePos p: mainBoard.allValidMoves()){
-                            if(mainBoard.getBlank().x>p.x){
-                                mainBoard.move(p);
+                        case "L":
+                            for (Board.TilePos p: mainBoard.allValidMoves()){
+                                if(mainBoard.getBlank().x>p.x){
+                                    mainBoard.move(p);
+                                }
                             }
-                        }
+                    }
                 }
             }
+
         }
+
+        if (mainBoard.isSolvable()){
+            System.out.println("Matrix is solvable");
+        }else{
+            System.out.println("Non Solvable Matrix, Sorry");
+            return;
+        }
+
         if (args[0].equals(BF_OPTION)||args[0].equals(ASTAR_OPTION)||args[0].equals(SMA_OPTION)){
             if (!Objects.equals(args[1], "0") && !Objects.equals(args[1], "1")){
                 System.out.println("Invalid output for heuristic");
@@ -106,27 +127,43 @@ public class main {
                 BFSSolver bfs = new BFSSolver();
                 solution = bfs.bfsSolver(mainBoard);
                 showSolution(solution);
+                break;
+
+
+            case (DFS_OPTION):
+                mainBoard.show();
+                System.out.println("Solving with DFS");
+                DFSSolver dfs = new DFSSolver();
+                solution = dfs.dfsSolver(mainBoard);
+                showSolution(solution);
+                break;
 
             case (ASTAR_OPTION):
                 mainBoard.show();
                 System.out.println("Solving with A*");
                 AStarSolver a = new AStarSolver();
-                solution = a.aStarSolve(mainBoard,heuristic);
+                solution = a.aStarSolve(mainBoard, heuristic);
                 showSolution(solution);
+                break;
 
+            case (BF_OPTION):
+                mainBoard.show();
+                System.out.println("Solving with Best First Search");
+                BestFSSolver bf = new BestFSSolver();
+                solution = bf.bestFSSolver(mainBoard);
+                showSolution(solution);
+                break;
+
+            case (IDFS_OPTION):
+                mainBoard.show();
+                System.out.println("Solving with Iterative deepenening DFS");
+                IDFSSolver idfsSolver = new IDFSSolver();
+                solution = idfsSolver.idfsSolver(mainBoard);
+                showSolution(solution);
+                break;
         }
 
-       /* List<AStarSolver> solution;
 
-        System.out.println("Solving with A*");
-        solution = aStarSolve(p);
-        showSolution(solution);
-
-        System.out.println("Solving with Dijkstra");
-
-        solution = dijkstraSolve(p);
-        showSolution(solution);
-        */
     }
 
     private static void showSolution(List<Board> solution) {

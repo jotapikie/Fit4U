@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class BFSSolver {
 
@@ -10,7 +7,7 @@ public class BFSSolver {
      * @return
      */
     public List<Board> bfsSolver(Board b) throws CloneNotSupportedException {
-        Queue<Board> toVisit = new LinkedList<Board>();
+        Queue<Board> toVisit = new LinkedList<>();
         HashMap<Board, Board> predecessor = new HashMap<Board, Board>();
         toVisit.add(b);
         predecessor.put(b, null);
