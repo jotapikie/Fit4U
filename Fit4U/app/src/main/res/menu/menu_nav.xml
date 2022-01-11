@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/home_icon"
+        android:title="@string/home" />
+    <item
+        android:icon="@drawable/calendar_icon"
+        android:title="@string/calendar" />
+    <item
+        android:icon="@drawable/connectivity_icon"
+        android:title="@string/Connectivity" />
+    <item
+        android:icon="@drawable/food_icon"
+        android:title="@string/Meals" />
+    <item
+        android:icon="@drawable/ic_dumbbell"
+        android:title="@string/Training" />
+</menu>

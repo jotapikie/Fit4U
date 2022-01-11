@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".TrainingActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="125dp">
+
+                <TextView
+                    android:layout_width="259dp"
+                    android:layout_height="152dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/box" />
+
+                <TextView
+                    android:id="@+id/dataTreino1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="104dp"
+                    android:fontFamily="@font/cabin_bold"
+                    android:text="01/01/2000"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="127dp"
+                    android:layout_height="104dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="38dp"
+                    android:src="@drawable/treino" />
+
+                <TextView
+                    android:id="@+id/calories1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="63dp"
+                    android:drawableLeft="@drawable/fogo"
+                    android:text=" 666 kcal"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tempo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="100dp"
+                    android:drawableLeft="@drawable/tempo"
+                    android:text=" 60 min"
+                    android:textColor="#FFFFFF" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="285dp">
+
+                <TextView
+                    android:layout_width="259dp"
+                    android:layout_height="152dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/box" />
+
+                <TextView
+                    android:id="@+id/dataTreino2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="104dp"
+                    android:fontFamily="@font/cabin_bold"
+                    android:text="01/01/2000"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="127dp"
+                    android:layout_height="104dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="38dp"
+                    android:src="@drawable/treino" />
+
+                <TextView
+                    android:id="@+id/calories2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="63dp"
+                    android:drawableLeft="@drawable/fogo"
+                    android:text=" 666 kcal"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tempo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="100dp"
+                    android:drawableLeft="@drawable/tempo"
+                    android:text=" 60 min"
+                    android:textColor="#FFFFFF" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="445dp">
+
+                <TextView
+                    android:layout_width="259dp"
+                    android:layout_height="152dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/box" />
+
+                <TextView
+                    android:id="@+id/dataTreino3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="104dp"
+                    android:fontFamily="@font/cabin_bold"
+                    android:text="01/01/2000"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="127dp"
+                    android:layout_height="104dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="38dp"
+                    android:src="@drawable/treino" />
+
+                <TextView
+                    android:id="@+id/calories3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="63dp"
+                    android:drawableLeft="@drawable/fogo"
+                    android:text=" 666 kcal"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tempo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="100dp"
+                    android:drawableLeft="@drawable/tempo"
+                    android:text=" 60 min"
+                    android:textColor="#FFFFFF" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="605dp">
+
+                <TextView
+                    android:layout_width="259dp"
+                    android:layout_height="152dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/box" />
+
+                <TextView
+                    android:id="@+id/dataTreino4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="104dp"
+                    android:fontFamily="@font/cabin_bold"
+                    android:text="01/01/2000"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="127dp"
+                    android:layout_height="104dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="38dp"
+                    android:src="@drawable/treino" />
+
+                <TextView
+                    android:id="@+id/calories4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="63dp"
+                    android:drawableLeft="@drawable/fogo"
+                    android:text=" 666 kcal"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tempo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="100dp"
+                    android:drawableLeft="@drawable/tempo"
+                    android:text=" 60 min"
+                    android:textColor="#FFFFFF" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="765dp">
+
+                <TextView
+                    android:layout_width="259dp"
+                    android:layout_height="152dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/box" />
+
+                <TextView
+                    android:id="@+id/dataTreino5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="104dp"
+                    android:fontFamily="@font/cabin_bold"
+                    android:text="01/01/2000"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="127dp"
+                    android:layout_height="104dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="38dp"
+                    android:src="@drawable/treino" />
+
+                <TextView
+                    android:id="@+id/calories5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="63dp"
+                    android:drawableLeft="@drawable/fogo"
+                    android:text=" 666 kcal"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tempo5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="100dp"
+                    android:drawableLeft="@drawable/tempo"
+                    android:text=" 60 min"
+                    android:textColor="#FFFFFF" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_marginTop="59dp"
+                android:layout_marginEnd="0dp"
+                android:fontFamily="@font/cabin_bold"
+                android:text="Your last training:"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="92dp"
+        android:layout_height="86dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="361dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="-43dp"
+        android:fontFamily="@font/anton"
+        android:text="+"
+        android:textColor="#353535"
+        android:textSize="60sp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="659dp"
+        android:layout_marginEnd="0dp"
+        android:background="#353535"
+        app:itemIconTint="#9C9C9C"
+        app:itemTextColor="#9C9C9C"
+        app:menu="@menu/simple_menu"
+        tools:ignore="MissingConstraints" />
+
+</RelativeLayout>

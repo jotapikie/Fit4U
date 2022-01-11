@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Fit4U</string>
+    <string name="calendar">Calendar</string>
+    <string name="home">Home</string>
+    <string name="Connectivity">Connectivity</string>
+    <string name="Meals">Meals</string>
+    <string name="Training">Training</string>
+    <string name="Help">Help</string>
+</resources>

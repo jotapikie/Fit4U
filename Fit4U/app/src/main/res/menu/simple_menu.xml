@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/home_icon"
+        android:title="@string/home"
+        android:background="#00FFFFFF"
+        />
+    <item
+        android:icon="@drawable/help_icon"
+        android:title="@string/Help"
+        android:background="#00FFFFFF"
+        />
+</menu>
