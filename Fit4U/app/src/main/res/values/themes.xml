@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- <item name="android:textColorPrimary">TITLE_COLOR_GOES_HERE</item>
+        <item name="android:textColorSecondary">SUBTITLE_COLOR_GOES_HERE</item> -->
+    </style>
+
+    <style name="Theme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
