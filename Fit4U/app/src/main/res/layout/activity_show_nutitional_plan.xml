@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".ShowNutitionalPlan">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="610dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@drawable/box"
+        android:layout_marginTop="40dp"
+        android:paddingVertical="10dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/texto1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/bebas_neue_regular"
+                    android:gravity="center"
+                    android:text="Nutritional Plan"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rl1"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto1"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/box_new">
+
+                    <TextView
+                        android:id="@+id/ex1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="Breakfast\n\nAlimento 1\nAlimento 2\nAlimento 3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/ex1"
+                        android:src="@drawable/breakfast" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="350 KcAL"
+                        android:textColor="#FFFFFF"
+                        android:layout_toRightOf="@id/ex1"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl2"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl1"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/box_new">
+
+                    <TextView
+                        android:id="@+id/ex2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="Snack 1\n\nAlimento 1\nAlimento 2\nAlimento 3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/ex2"
+                        android:src="@drawable/snack" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="350 KcAL"
+                        android:textColor="#FFFFFF"
+                        android:layout_toRightOf="@id/ex2"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl3"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl2"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/box_new">
+
+                    <TextView
+                        android:id="@+id/ex3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="Lunch\n\nAlimento 1\nAlimento 2\nAlimento 3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/ex3"
+                        android:src="@drawable/refeicao" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="350 KcAL"
+                        android:textColor="#FFFFFF"
+                        android:layout_toRightOf="@id/ex3"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl4"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl3"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/box_new">
+
+                    <TextView
+                        android:id="@+id/ex4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="Snack 2\n\nAlimento 1\nAlimento 2\nAlimento 3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/img4"
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/ex4"
+                        android:src="@drawable/snack" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="350 KcAL"
+                        android:textColor="#FFFFFF"
+                        android:layout_toRightOf="@id/ex4"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl5"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl4"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/box_new">
+
+                    <TextView
+                        android:id="@+id/ex5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="Dinner\n\nAlimento 1\nAlimento 2\nAlimento 3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/img5"
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/ex5"
+                        android:src="@drawable/refeicao" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/roboto_condensed"
+                        android:gravity="center"
+                        android:text="350 KcAL"
+                        android:textColor="#FFFFFF"
+                        android:layout_toRightOf="@id/ex5"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="659dp"
+        android:layout_marginEnd="0dp"
+        android:background="#353535"
+        app:itemIconTint="#9C9C9C"
+        app:itemTextColor="#9C9C9C"
+        app:menu="@menu/simple_menu"
+        tools:ignore="MissingConstraints" />
+</RelativeLayout>

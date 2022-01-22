@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fit4U">
         <activity
+            android:name=".ShowNutitionalPlan"
+            android:exported="false" />
+        <activity
             android:name=".ShowTraining"
             android:exported="false" />
         <activity

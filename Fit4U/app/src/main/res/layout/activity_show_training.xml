@@ -8,12 +8,14 @@
     tools:context=".ShowTraining">
 
     <RelativeLayout
+        android:id="@+id/rll"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:background="@drawable/box"
-        android:paddingVertical="72dp">
+        android:layout_marginTop="20dp"
+        android:paddingVertical="10dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -143,6 +145,7 @@
                             android:layout_toRightOf="@id/ex2"
                             android:src="@drawable/treino" />
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:id="@+id/rl3"
                         android:layout_width="match_parent"
@@ -302,6 +305,34 @@
 
     </RelativeLayout>
 
+
+    <RelativeLayout
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="10dp"
+        android:layout_below="@id/rll"
+        >
+
+        <TextView
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Start training"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+    </RelativeLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="72dp"
