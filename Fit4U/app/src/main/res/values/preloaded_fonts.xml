@@ -5,5 +5,7 @@
         <item>@font/anton</item>
         <item>@font/benchnine_bold</item>
         <item>@font/cabin_bold</item>
+        <item>@font/bebas_neue</item>
+        <item>@font/roboto_condensed</item>
     </array>
 </resources>

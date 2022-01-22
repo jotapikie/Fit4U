@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".ShowTraining">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@drawable/box"
+        android:paddingVertical="72dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/texto1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/bebas_neue_regular"
+                    android:gravity="center"
+                    android:text="Training\nDate: 12/12/2021"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/texto2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto1"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/roboto_condensed"
+                    android:gravity="center"
+                    android:text="Time: 00:59h"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/texto3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/roboto_condensed"
+                    android:gravity="center"
+                    android:text="Calories Burned: 500 kCal"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/texto4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_condensed"
+                    android:gravity="center"
+                    android:text="Exercises:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto4"
+                    android:layout_marginLeft="20dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rl1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/ex1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="@font/roboto_condensed"
+                            android:gravity="center"
+                            android:text="Merdas de treino 1"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/ex1"
+                            android:src="@drawable/treino" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rl1"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/ex2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="@font/roboto_condensed"
+                            android:gravity="center"
+                            android:text="Merdas de treino 2"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/ex2"
+                            android:src="@drawable/treino" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/rl3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rl2"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/ex3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="@font/roboto_condensed"
+                            android:gravity="center"
+                            android:text="Merdas de treino 3"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/ex3"
+                            android:src="@drawable/treino" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rl3"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/ex4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="@font/roboto_condensed"
+                            android:gravity="center"
+                            android:text="Merdas de treino 4"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/img4"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/ex4"
+                            android:src="@drawable/treino" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rl4"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/ex5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="@font/roboto_condensed"
+                            android:gravity="center"
+                            android:text="Merdas de treino 5"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/img5"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/ex5"
+                            android:src="@drawable/treino" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rl5"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/ex6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="@font/roboto_condensed"
+                            android:gravity="center"
+                            android:text="Merdas de treino 6"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/img6"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/ex6"
+                            android:src="@drawable/treino" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rl6"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/ex7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="@font/roboto_condensed"
+                            android:gravity="center"
+                            android:text="Merdas de treino 7"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/img7"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/ex7"
+                            android:src="@drawable/treino" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="659dp"
+        android:layout_marginEnd="0dp"
+        android:background="#353535"
+        app:itemIconTint="#9C9C9C"
+        app:itemTextColor="#9C9C9C"
+        app:menu="@menu/simple_menu"
+        tools:ignore="MissingConstraints" />
+
+</RelativeLayout>
