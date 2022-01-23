@@ -6,13 +6,15 @@ import java.util.regex.Pattern;
 public class User {
     private String username;
     private String password;
+    private String fullName;
     private int type;
 
 
 
-    public User(String username, String password, int type){
+    public User(String username, String password, String fullName, int type){
         this.setUsername(username);
         this.setPassword(password);
+        this.fullName=fullName;
         this.setType(type);
 
     }
@@ -56,6 +58,8 @@ public class User {
     public String getUsername(){ return this.username;}
 
     public String getPassword() { return this.password;}
+
+    public String getFullName(){ return this.fullName;}
 
     public int getType(){ return this.type;}
 }
