@@ -13,8 +13,8 @@ public class Client extends User{
     private float pretendedWeight;
     private static final String regex = "^(.+)@(.+)$";
 
-    public Client(String username, String password, String name, float currentWeight, float height, float pretendedWeight) {
-        super(username, password);
+    public Client(String username, String password, int type, String name, float currentWeight, float height, float pretendedWeight) {
+        super(username, password, type);
         setEmail(email);
         this.name=name;
         setCurrentWeight(currentWeight);

@@ -64,7 +64,7 @@
             android:textColor="#333333"
             android:textSize="15dp" />
 
-        <TextView
+        <Button
             android:id="@+id/button"
             android:layout_width="126dp"
             android:layout_height="39dp"

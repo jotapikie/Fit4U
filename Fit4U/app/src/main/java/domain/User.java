@@ -6,13 +6,23 @@ import java.util.regex.Pattern;
 public class User {
     private String username;
     private String password;
+    private int type;
 
 
 
-    public User(String username, String password){
+    public User(String username, String password, int type){
         this.setUsername(username);
         this.setPassword(password);
+        this.setType(type);
 
+    }
+
+    private void setType(int type) {
+        if (type==0||type==1){
+            this.type=type;
+        }else{
+            throw new IllegalArgumentException("Wrong type of user");
+        }
     }
 
     private void setPassword(String password) {
@@ -43,9 +53,9 @@ public class User {
         }
     }
 
-    public String getUsername(){
-        return this.username;
-    }
+    public String getUsername(){ return this.username;}
 
     public String getPassword() { return this.password;}
+
+    public int getType(){ return this.type;}
 }

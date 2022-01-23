@@ -1,9 +1,11 @@
 package com.example.fit4u;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Pair;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,10 +24,25 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditTest = findViewById(R.id.password);
         loginButton = findViewById(R.id.button);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                db.checkLogin(usernameEditTest.getText().toString(), passwordEditTest.getText().toString());
+        setup();
+    }
+
+    protected void setup(){
+        Intent intentClient = new Intent(this,MainActivity.class);
+        Intent intentTrainer = new Intent(this, MainActivity.class);
+        loginButton.setOnClickListener(view -> {
+            Pair<Integer, Integer> result=db.checkLogin(usernameEditTest.getText().toString(), passwordEditTest.getText().toString());
+            if (result==null){
+                Toast.makeText(getApplicationContext(), "wrong username or password", Toast.LENGTH_LONG).show();
+            }else{
+                if (result.second==0){
+                    intentClient.putExtra("key", result.first);
+                    startActivity(intentClient);
+                }else{
+                    intentTrainer.putExtra("key", result.first);
+                    startActivity(intentTrainer);
+                }
+                finish();
             }
         });
     }

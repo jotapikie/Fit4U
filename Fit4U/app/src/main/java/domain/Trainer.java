@@ -5,8 +5,8 @@ public class Trainer extends User {
     private String name;
     private int classification;
 
-    public Trainer(String username, String password, String name, int classification) {
-        super(username, password);
+    public Trainer(String username, String password, int type, String name, int classification) {
+        super(username, password, type);
         this.name=name;
         setClassification(classification);
     }

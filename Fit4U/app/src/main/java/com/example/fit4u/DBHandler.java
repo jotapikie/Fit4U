@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Pair;
 
 import domain.User;
 
@@ -25,6 +26,13 @@ public class DBHandler extends SQLiteOpenHelper {
     // below variable for our course description column.
     private static final String PASSWORD_COL = "password";
 
+    // below variable for our course description column.
+    private static final String TYPE_COL = "type";
+
+
+
+
+
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -40,7 +48,8 @@ public class DBHandler extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + USERNAME_COL + " TEXT,"
-                + PASSWORD_COL + " TEXT" + ")";
+                + PASSWORD_COL + " TEXT,"
+                + TYPE_COL + " TEXT"+ ")";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -63,6 +72,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // along with its key and value pair.
         values.put(USERNAME_COL, user.getUsername());
         values.put(PASSWORD_COL, user.getPassword());
+        values.put(TYPE_COL, user.getType());
 
         // after adding all values we are passing
         // content values to our table.
@@ -79,7 +89,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String s;
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + username + " =?", null);
 
-        if (c.getCount() <= 0) {
+        if (c.getCount()>0){
             c.close();
             db.close();
             return false;
@@ -91,20 +101,22 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public boolean checkLogin(String username, String password) {
+    public Pair<Integer, Integer> checkLogin(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String s;
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + username + " =? AND " + password + " =?", null);
-
-        if (c.getCount() <= 0) {
+        if (c.getCount() > 0) {
+            int key = c.getColumnIndex(ID_COL);
+            int type = c.getColumnIndex(TYPE_COL);
             c.close();
             db.close();
-            return false;
+            return new Pair<Integer,Integer>(key,type);
+
         } else {
             c.close();
             db.close();
-            return true;
+            return null;
         }
     }
 
