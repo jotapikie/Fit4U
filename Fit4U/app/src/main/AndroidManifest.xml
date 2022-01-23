@@ -12,14 +12,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fit4U">
         <activity
-            android:name=".ShowNutitionalPlan"
+            android:name=".MainMenuPT"
             android:exported="false" />
+        <activity
+            android:name=".MainMenuUser"
+            android:exported="false" />
+        <activity
+            android:name=".ShowNutitionalPlan"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="package.HomeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ShowTraining"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".NewTrainingActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="package.HomeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".TrainingActivity"
             android:exported="true">
