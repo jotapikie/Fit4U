@@ -14,233 +14,76 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:background="@drawable/box"
         android:paddingVertical="10dp">
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center">
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/box">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/texto1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/bebas_neue_regular"
+                android:gravity="center"
+                android:text="your trainining for today"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/texto1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="19dp"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="@font/bebas_neue_regular"
-                    android:gravity="center"
-                    android:text="your trainining for today"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30sp" />
+            <TextView
+                android:id="@+id/texto2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/texto1"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/roboto_condensed"
+                android:gravity="center"
+                android:text="Estimated time: 00:59h"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/texto2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/texto1"
-                    android:layout_marginLeft="20dp"
-                    android:fontFamily="@font/roboto_condensed"
-                    android:gravity="center"
-                    android:text="Estimated time: 00:59h"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
+            <TextView
+                android:id="@+id/texto3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/texto2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/roboto_condensed"
+                android:gravity="left"
+                android:text="Est calories burned: 500 kCal"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
 
-                <TextView
-                    android:id="@+id/texto3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/texto2"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="@font/roboto_condensed"
-                    android:gravity="left"
-                    android:text="Est calories burned: 500 kCal"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
+            <TextView
+                android:id="@+id/texto4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/texto3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_condensed"
+                android:gravity="center"
+                android:text="Exercises:"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/texto4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/texto3"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/roboto_condensed"
-                    android:gravity="center"
-                    android:text="Exercises:"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
+            <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/texto4"
+                android:scrollbars="vertical"
+                tools:context=".SeeWeekTrainingActivity" />
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/texto4"
-                    android:layout_marginLeft="20dp">
-
-                    <RelativeLayout
-                        android:id="@+id/rl1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:id="@+id/ex1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:fontFamily="@font/roboto_condensed"
-                            android:gravity="center"
-                            android:text="ex1Name: 2min"
-                            android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
-
-                        <ImageView
-                            android:id="@+id/img1"
-                            android:layout_width="100dp"
-                            android:layout_height="60dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_toRightOf="@id/ex1"
-                            android:src="@drawable/treino" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rl2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/rl1"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:id="@+id/ex2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:fontFamily="@font/roboto_condensed"
-                            android:gravity="center"
-                            android:text="ex2Name: 2min"
-                            android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
-
-                        <ImageView
-                            android:id="@+id/img2"
-                            android:layout_width="100dp"
-                            android:layout_height="60dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_toRightOf="@id/ex2"
-                            android:src="@drawable/treino" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rl3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/rl2"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:id="@+id/ex3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:fontFamily="@font/roboto_condensed"
-                            android:gravity="center"
-                            android:text="ex3Name: 2min"
-                            android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
-
-                        <ImageView
-                            android:id="@+id/img3"
-                            android:layout_width="100dp"
-                            android:layout_height="60dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_toRightOf="@id/ex3"
-                            android:src="@drawable/treino" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rl4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/rl3"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:id="@+id/ex4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:fontFamily="@font/roboto_condensed"
-                            android:gravity="center"
-                            android:text="ex4Name: 2min"
-                            android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
-
-                        <ImageView
-                            android:id="@+id/img4"
-                            android:layout_width="100dp"
-                            android:layout_height="60dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_toRightOf="@id/ex4"
-                            android:src="@drawable/treino" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rl5"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/rl4"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:id="@+id/ex5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="15dp"
-                            android:fontFamily="@font/roboto_condensed"
-                            android:gravity="center"
-                            android:text="ex5Name: 2min"
-                            android:textColor="#FFFFFF"
-                            android:textSize="20sp" />
-
-                        <ImageView
-                            android:id="@+id/img5"
-                            android:layout_width="100dp"
-                            android:layout_height="60dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_toRightOf="@id/ex5"
-                            android:src="@drawable/treino" />
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-
-            </RelativeLayout>
-        </ScrollView>
+        </RelativeLayout>
 
 
     </RelativeLayout>
