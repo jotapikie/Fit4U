@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Pair;
 
+import java.util.LinkedHashMap;
+
+import domain.Exercice;
 import domain.Training;
 import domain.User;
 
@@ -203,10 +206,24 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public Training getTraining(int clientID, int dayOfWeek){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM "+ );
+        Cursor c = db.rawQuery("SELECT E."+EXERCISE_NAME_COL+", E."+EXERCISE_REPS_COL+" FROM "+ EXERCISE_TABLE
+                +" E inner join "+EXERCISE_TRAININGPLAN_TABLE+" EP on ep."+EXERCISE_ID_COL+" = e."+EXERCISE_ID_COL+" inner join "
+                +TRAININGPLAN_TABLE+" TP ON TP."+EXERCISE_ID_COL+" = EP."+TRAININGPLAN_ID_COL+" where tp."+TRAININGPLAN_CLIENTID_COL+" = "+clientID+" and tp."
+                +TRAININGPLAN_DAYOFWEEK_COL+" ="+dayOfWeek+")", null);
 
 
+        int exerciseReps = c.getColumnIndex(EXERCISE_REPS_COL);
+        int exerciseName = c.getColumnIndex(EXERCISE_NAME_COL);
+        int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_TYPE_CALORIES_COL);
+        int exerciseDescription = c.getColumnIndex(EXERCISE_TYPE_DESCRIPTION_COL);
+        LinkedHashMap<Exercice,Integer> trainingExs= new LinkedHashMap();
+        while (c.moveToNext()){
+            trainingExs.put(new Exercice(c.getString(exerciseName), c.getFloat(exerciseCaloriesPerMin), c.getString(exerciseDescription)), c.getInt(exerciseReps));
+        };
 
+        Training training= new Training(trainingExs);
+
+        return training;
     }
 
 
