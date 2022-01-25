@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fit4U">
         <activity
+            android:name=".StartTraning"
+            android:exported="false" />
+        <activity
             android:name=".MainMenuPT"
             android:exported="false" />
         <activity
