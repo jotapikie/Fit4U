@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Pair;
 
+import domain.Training;
 import domain.User;
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -199,35 +200,29 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean userExists(String username){
-        SQLiteDatabase db = this.getWritableDatabase();
 
-        String s;
-        Cursor c = db.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + username + " =?", null);
+    public Training getTraining(int clientID, int dayOfWeek){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM "+ );
 
-        if (c.getCount()>0){
-            c.close();
-            db.close();
-            return false;
-        } else {
-            c.close();
-            db.close();
-            return true;
-        }
+
+
     }
 
 
-    public Pair<Integer, Integer> checkLogin(String username, String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public User checkLogin(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        String s;
         Cursor c = db.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + username + " =? AND " + password + " =?", null);
         if (c.getCount() > 0) {
+            int s = c.getColumnIndex(USER_USERNAME_COL);
             int key = c.getColumnIndex(USER_ID_COL);
             int type = c.getColumnIndex(USER_TYPE_COL);
+
+            User result= new User(c.getInt(key),c.getString(s), c.getInt(type));
             c.close();
             db.close();
-            return new Pair<Integer,Integer>(key,type);
+            return result;
 
         } else {
             c.close();

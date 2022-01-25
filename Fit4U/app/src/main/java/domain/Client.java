@@ -14,9 +14,8 @@ public class Client extends User{
     private static final String regex = "^(.+)@(.+)$";
 
     public Client(String username, String password, int type, String name, float currentWeight, float height, float pretendedWeight) {
-        super(username, password, type);
+        super(username, password, name, type);
         setEmail(email);
-        this.name=name;
         setCurrentWeight(currentWeight);
         setHeight(height);
         setPretendedWeight(pretendedWeight);

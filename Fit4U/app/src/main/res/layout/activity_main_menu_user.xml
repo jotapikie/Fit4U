@@ -35,10 +35,10 @@
             android:layout_marginBottom="25dp"
             android:fontFamily="@font/bebas_neue_regular"
             android:text="Welcome user"
-            android:textAppearance="bold"
             android:textSize="25dp" />
 
         <TextView
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ivLogo"
@@ -64,6 +64,7 @@
                 android:background="@drawable/box" />
 
             <TextView
+                android:id="@+id/start_training_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -88,6 +89,7 @@
                 android:background="@drawable/box" />
 
             <TextView
+                android:id="@+id/see_nutritional_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -113,6 +115,7 @@
                 android:background="@drawable/box" />
 
             <TextView
+                android:id="@+id/see_training_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

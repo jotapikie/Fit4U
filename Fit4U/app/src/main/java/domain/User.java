@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
+    private int id;
     private String username;
     private String password;
     private String fullName;
@@ -12,11 +13,17 @@ public class User {
 
 
     public User(String username, String password, String fullName, int type){
-        this.setUsername(username);
+        this.username=username;
         this.setPassword(password);
         this.fullName=fullName;
         this.setType(type);
 
+    }
+
+    public User(int id, String username, int type){
+        this.id=id;
+        this.username=username;
+        this.type=type;
     }
 
     private void setType(int type) {
@@ -47,13 +54,6 @@ public class User {
         return false;
     }
 
-    private void setUsername(String username) {
-        if (!Gym.usernameExists(username)){
-            this.username=username;
-        }else{
-            throw new IllegalArgumentException("Username Already Exists, try a different one");
-        }
-    }
 
     public String getUsername(){ return this.username;}
 
@@ -62,4 +62,6 @@ public class User {
     public String getFullName(){ return this.fullName;}
 
     public int getType(){ return this.type;}
+
+    public int getID() { return this.id; }
 }

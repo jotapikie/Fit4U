@@ -35,7 +35,6 @@
             android:layout_marginBottom="25dp"
             android:fontFamily="@font/bebas_neue_regular"
             android:text="Welcome user"
-            android:textAppearance="bold"
             android:textSize="25dp" />
 
         <TextView

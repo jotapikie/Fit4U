@@ -6,7 +6,7 @@ public class Trainer extends User {
     private int classification;
 
     public Trainer(String username, String password, int type, String name, int classification) {
-        super(username, password, type);
+        super(username, password, name, type);
         this.name=name;
         setClassification(classification);
     }
