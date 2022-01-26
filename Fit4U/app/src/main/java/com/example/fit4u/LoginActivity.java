@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intentClient = new Intent(this,MainActivity.class);
         Intent intentTrainer = new Intent(this, MainActivity.class);
         loginButton.setOnClickListener(view -> {
-            User result=dbHandler.checkLogin(usernameEditTest.getText().toString(), passwordEditTest.getText().toString());
+            User result= dbHandler.checkLogin(usernameEditTest.getText().toString(), passwordEditTest.getText().toString());
             if (result==null){
                 Toast.makeText(getApplicationContext(), "wrong username or password", Toast.LENGTH_LONG).show();
             }else{

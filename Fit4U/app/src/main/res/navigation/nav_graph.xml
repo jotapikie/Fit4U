@@ -12,14 +12,64 @@
         tools:layout="@layout/activity_login">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/Home" />
+            android:id="@+id/loginToUserMenu"
+            app:destination="@id/MainMenuUserFragment" />
+        <action
+            android:id="@+id/loginToPTMenu"
+            app:destination="@id/MainMenuPTFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/Home"
-        android:name="com.example.fit4u.HomeActivity"
-        android:label="home"
-        tools:layout="@layout/activity_home">
 
+    <fragment
+        android:id="@+id/MainMenuUserFragment"
+        android:name="com.example.fit4u.MainMenuUser"
+        android:label="home"
+        tools:layout="@layout/activity_main_menu_user">
+        <action
+            android:id="@+id/menuToShowTraining"
+            app:destination="@id/StartNewTrainingFragment" />
+        <action
+            android:id="@+id/menuToShowNutritionalPlan"
+            app:destination="@id/seeNutritionalPlanFragment" />
+        <action
+            android:id="@+id/menuToShowWeekTraining"
+            app:destination="@id/seeTrainingPlanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/StartNewTrainingFragment"
+        android:name="com.example.fit4u.StartNewTrainingActivity"
+        android:label="home"
+        tools:layout="@layout/activity_show_training">
+        <action
+            android:id="@+id/showToStartTraining"
+            app:destination="@id/startTrainingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/startTrainingFragment"
+        android:name="com.example.fit4u.StartTraning"
+        android:label="home"
+        tools:layout="@layout/activity_start_traning">
+    </fragment>
+
+    <fragment
+        android:id="@+id/seeNutritionalPlanFragment"
+        android:name="com.example.fit4u.SeeNutritionalPlanActivity"
+        android:label="home"
+        tools:layout="@layout/activity_show_nutitional_plan">
+    </fragment>
+
+    <fragment
+        android:id="@+id/seeTrainingPlanFragment"
+        android:name="com.example.fit4u.SeeWeekTrainingActivity"
+        android:label="home"
+        tools:layout="@layout/activity_new_training">
+    </fragment>
+
+    <fragment
+        android:id="@+id/MainMenuPTFragment"
+        android:name="com.example.fit4u.MainMenuPT"
+        android:label="home"
+        tools:layout="@layout/activity_main_menu_pt">
     </fragment>
 </navigation>

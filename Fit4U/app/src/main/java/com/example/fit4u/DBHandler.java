@@ -104,7 +104,6 @@ public class DBHandler extends SQLiteOpenHelper {
                 + COACH_USERID_COL + " INTEGER(10) NOT NULL, FOREIGN KEY("+USER_ID_COL+") REFERENCES "+ USER_TABLE + "("+USER_ID_COL+")"+ ")";
 
 
-
         String createClientTable = "CREATE TABLE " + CLIENT_TABLE + " ("
                 + CLIENT_CLIENTID_COL + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
                 + CLIENT_COACHID_COL + " INTEGER(10),"
@@ -118,7 +117,6 @@ public class DBHandler extends SQLiteOpenHelper {
                 + TRAININGPLAN_COACHID_COL +") REFERENCES "+COACH_TABLE+"("+COACH_ID_COL+"))";
 
 
-
         String createExerciseTable = "CREATE TABLE " + EXERCISE_TABLE + " ("
                 + EXERCISE_ID_COL + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
                 + EXERCISE_DAYOFWEEK_COL + " INTEGER(10) NOT NULL, "
@@ -127,7 +125,6 @@ public class DBHandler extends SQLiteOpenHelper {
                 + EXERCISE_REPS_COL + " INTEGER(10) NOT NULL, "
                 + EXERCISE_CALORIESPERMIN_COL + " FLOAT(10) NOT NULL, FOREIGN KEY("+ EXERCISE_TRAININGPLANID_COL +") REFERENCES "+ TRAININGPLAN_TABLE +"("
                 + TRAININGPLAN_ID_COL +"))";
-
 
 
         String createIngredientTable = "CREATE TABLE " + INGREDIENT_TABLE + " ("
@@ -168,35 +165,19 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(createNutritionalPlanMealTable);
         db.execSQL(createTrainingPlanTable);
         db.execSQL(createUserTable);
-
-
     }
 
-    // this method is use to add new course to our sqlite database.
     public void addNewUser(User user) {
-
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
         SQLiteDatabase db = this.getWritableDatabase();
-
-        // on below line we are creating a
-        // variable for content values.
         ContentValues values = new ContentValues();
 
-        // on below line we are passing all values
-        // along with its key and value pair.
         values.put(USER_USERNAME_COL, user.getUsername());
         values.put(USER_PASSWORD_COL, user.getPassword());
         values.put(USER_TYPE_COL, user.getType());
         values.put(USER_FULLNAME_COL, user.getFullName());
 
-        // after adding all values we are passing
-        // content values to our table.
         db.insert(USER_TABLE, null, values);
 
-        // at last we are closing our
-        // database after adding database.
         db.close();
     }
 
@@ -206,11 +187,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 +" E inner join "+TRAININGPLAN_TABLE+" TP on E."+EXERCISE_TRAININGPLANID_COL+" = TP."+TRAININGPLAN_ID_COL+" WHERE E."
                 + EXERCISE_DAYOFWEEK_COL +" = "+ dayOfWeek +" and TP."+ TRAININGPLAN_CLIENTID_COL +" = "+ clientID +";", null);
 
-
         int exerciseReps = c.getColumnIndex(EXERCISE_REPS_COL);
         int exerciseName = c.getColumnIndex(EXERCISE_NAME_COL);
         int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_CALORIESPERMIN_COL);
-
 
         LinkedHashMap<Exercice,Integer> trainingExs= new LinkedHashMap();
         while (c.moveToNext()){
@@ -222,29 +201,32 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     public User checkLogin(String username, String password) {
+        try{
         SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor c = db.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + USER_USERNAME_COL + " = "+username+" AND " + USER_PASSWORD_COL + " = "+password, null);
+        Cursor c = db.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + USER_USERNAME_COL + " = " + username + " AND " + USER_PASSWORD_COL + " = " + password, null);
         if (c.getCount() > 0) {
             int s = c.getColumnIndex(USER_USERNAME_COL);
             int key = c.getColumnIndex(USER_ID_COL);
             int type = c.getColumnIndex(USER_TYPE_COL);
 
-            User result= new User(c.getInt(key),c.getString(s), c.getInt(type));
+            User result = new User(c.getInt(key), c.getString(s), c.getInt(type));
             c.close();
             db.close();
-            return result;
 
+            return result;
         } else {
             c.close();
             db.close();
+
+            return null;
+        }
+        }catch(Exception e){
             return null;
         }
     }
 
     @Override
     public void onUpgrade (SQLiteDatabase db,int oldVersion, int newVersion){
-        // this method is called to check if the table exists already.
         db.execSQL("DROP TABLE IF EXISTS " + CLIENT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + COACH_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + EXERCISE_TABLE);
