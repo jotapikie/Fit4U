@@ -47,7 +47,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TRAININGPLAN_ID_COL= "id";
     private static final String TRAININGPLAN_COACHID_COL="coachId";
     private static final String TRAININGPLAN_CLIENTID_COL= "clientId";
-    private static final String TRAININGPLAN_DAYOFWEEK_COL= "dayOfWeek";
 
 
     private static final String EXERCISE_ID_COL= "id";
@@ -115,8 +114,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String createTrainingPlanTable = "CREATE TABLE " + TRAININGPLAN_TABLE + " ("
                 + TRAININGPLAN_ID_COL + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
                 + TRAININGPLAN_CLIENTID_COL + " INTEGER(10) NOT NULL, "
-                + TRAININGPLAN_COACHID_COL + " INTEGER(10) NOT NULL,"
-                + TRAININGPLAN_DAYOFWEEK_COL + " INTEGER(10) NOT NULL, FOREIGN KEY("+TRAININGPLAN_CLIENTID_COL+") REFERENCES "+ CLIENT_TABLE + "("+CLIENT_CLIENTID_COL+"), FOREIGN KEY("
+                + TRAININGPLAN_COACHID_COL + " INTEGER(10) NOT NULL, FOREIGN KEY("+TRAININGPLAN_CLIENTID_COL+") REFERENCES "+ CLIENT_TABLE + "("+CLIENT_CLIENTID_COL+"), FOREIGN KEY("
                 + TRAININGPLAN_COACHID_COL +") REFERENCES "+COACH_TABLE+"("+COACH_ID_COL+"))";
 
 
@@ -226,7 +224,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public User checkLogin(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor c = db.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + username + " =? AND " + password + " =?", null);
+        Cursor c = db.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + USER_USERNAME_COL + " = "+username+" AND " + USER_PASSWORD_COL + " = "+password, null);
         if (c.getCount() > 0) {
             int s = c.getColumnIndex(USER_USERNAME_COL);
             int key = c.getColumnIndex(USER_ID_COL);
