@@ -24,7 +24,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String COACH_TABLE= "Coach";
     private static final String TRAININGPLAN_TABLE= "TrainingPlan";
     private static final String EXERCISE_TABLE = "Exercise";
-    private static final String EXERCISE_TRAININGPLAN_TABLE= "Exercise_TrainingPlan";
     private static final String INGREDIENT_TABLE= "Ingredient";
     private static final String MEAL_TABLE= "Meal";
     private static final String NUTRITIONALPLAN_MEAL_TABLE= "NutritionalPlan_Meal";
@@ -46,15 +45,17 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     private static final String TRAININGPLAN_ID_COL= "id";
+    private static final String TRAININGPLAN_COACHID_COL="coachId";
     private static final String TRAININGPLAN_CLIENTID_COL= "clientId";
     private static final String TRAININGPLAN_DAYOFWEEK_COL= "dayOfWeek";
 
-    private static final String EXERCISE_TRAININGPLAN_EXERCISEID_COL= "exerciseId";
-    private static final String EXERCISE_TRAININGPLAN_TRAININGPLANID_COL= "trainingPlanId";
 
     private static final String EXERCISE_ID_COL= "id";
+    private static final String EXERCISE_DAYOFWEEK_COL="dayOfWeek";
+    private static final String EXERCISE_TRAININGPLANID_COL="trainingPlanid";
     private static final String EXERCISE_NAME_COL= "exerciseName";
     private static final String EXERCISE_REPS_COL= "reps";
+    private static final String EXERCISE_CALORIESPERMIN_COL="caloriesPerMin";
 
     private static final String NUTRITIONALPLAN_ID_COL= "id";
     private static final String NUTRITIONALPLAN_CLIENTID_COL= "clientID";
@@ -113,22 +114,21 @@ public class DBHandler extends SQLiteOpenHelper {
 
         String createTrainingPlanTable = "CREATE TABLE " + TRAININGPLAN_TABLE + " ("
                 + TRAININGPLAN_ID_COL + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
-                + TRAININGPLAN_CLIENTID_COL + " INTEGER(10) NOT NULL,"
-                + TRAININGPLAN_DAYOFWEEK_COL + " INTEGER(10) NOT NULL, FOREIGN KEY("+TRAININGPLAN_CLIENTID_COL+") REFERENCES "+ CLIENT_TABLE + "("+CLIENT_CLIENTID_COL+")"+")";
+                + TRAININGPLAN_CLIENTID_COL + " INTEGER(10) NOT NULL, "
+                + TRAININGPLAN_COACHID_COL + " INTEGER(10) NOT NULL,"
+                + TRAININGPLAN_DAYOFWEEK_COL + " INTEGER(10) NOT NULL, FOREIGN KEY("+TRAININGPLAN_CLIENTID_COL+") REFERENCES "+ CLIENT_TABLE + "("+CLIENT_CLIENTID_COL+"), FOREIGN KEY("
+                + TRAININGPLAN_COACHID_COL +") REFERENCES "+COACH_TABLE+"("+COACH_ID_COL+"))";
 
-
-
-        String createExerciseTrainingPlanTable = "CREATE TABLE " + EXERCISE_TRAININGPLAN_TABLE + " ("
-                + EXERCISE_TRAININGPLAN_EXERCISEID_COL + " INTEGER(10) NOT NULL,"
-                + EXERCISE_TRAININGPLAN_TRAININGPLANID_COL + " INTEGER(10) NOT NULL, PRIMARY KEY ("
-                + EXERCISE_TRAININGPLAN_EXERCISEID_COL+", "+ EXERCISE_TRAININGPLAN_TRAININGPLANID_COL
-                +"), FOREIGN KEY("+EXERCISE_TRAININGPLAN_EXERCISEID_COL+") REFERENCES "+ EXERCISE_TABLE+"("+EXERCISE_ID_COL+")"+")";
 
 
         String createExerciseTable = "CREATE TABLE " + EXERCISE_TABLE + " ("
                 + EXERCISE_ID_COL + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                + EXERCISE_DAYOFWEEK_COL + " INTEGER(10) NOT NULL, "
+                + EXERCISE_TRAININGPLANID_COL + " INTEGER(10) NOT NULL, "
                 + EXERCISE_NAME_COL + " VARCHAR(255) NOT NULL,"
-                + EXERCISE_REPS_COL + " INTEGER(10) NOT NULL"+ ")";
+                + EXERCISE_REPS_COL + " INTEGER(10) NOT NULL, "
+                + EXERCISE_CALORIESPERMIN_COL + " FLOAT(10) NOT NULL, FOREIGN KEY("+ EXERCISE_TRAININGPLANID_COL +") REFERENCES "+ TRAININGPLAN_TABLE +"("
+                + TRAININGPLAN_ID_COL +"))";
 
 
 
@@ -164,7 +164,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(createClientTable);
         db.execSQL(createCoachTable);
         db.execSQL(createExerciseTable);
-        db.execSQL(createExerciseTrainingPlanTable);
         db.execSQL(createIngredientTable);
         db.execSQL(createMealTable);
         db.execSQL(createNutritionalPlanTable);
@@ -203,30 +202,25 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-/*
     public Training getTraining(int clientID, int dayOfWeek){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT E."+EXERCISE_NAME_COL+", E."+EXERCISE_REPS_COL+" FROM "+ EXERCISE_TABLE
-                +" E inner join "+EXERCISE_TRAININGPLAN_TABLE+" EP on ep."+EXERCISE_ID_COL+" = e."+EXERCISE_ID_COL+" inner join "
-                +TRAININGPLAN_TABLE+" TP ON TP."+EXERCISE_ID_COL+" = EP."+TRAININGPLAN_ID_COL+" where tp."+TRAININGPLAN_CLIENTID_COL+" = "+clientID+" and tp."
-                +TRAININGPLAN_DAYOFWEEK_COL+" ="+dayOfWeek+")", null);
+        Cursor c = db.rawQuery("SELECT E."+EXERCISE_NAME_COL+", E."+EXERCISE_REPS_COL+", E."+EXERCISE_CALORIESPERMIN_COL+ " FROM "+ EXERCISE_TABLE
+                +" E inner join "+TRAININGPLAN_TABLE+" TP on E."+EXERCISE_TRAININGPLANID_COL+" = TP."+TRAININGPLAN_ID_COL+" WHERE E."
+                + EXERCISE_DAYOFWEEK_COL +" = "+ dayOfWeek +" and TP."+ TRAININGPLAN_CLIENTID_COL +" = "+ clientID +";", null);
 
 
         int exerciseReps = c.getColumnIndex(EXERCISE_REPS_COL);
         int exerciseName = c.getColumnIndex(EXERCISE_NAME_COL);
+        int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_CALORIESPERMIN_COL);
 
-        int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_TYPE_CALORIES_COL);
-        int exerciseDescription = c.getColumnIndex(EXERCISE_TYPE_DESCRIPTION_COL);
 
         LinkedHashMap<Exercice,Integer> trainingExs= new LinkedHashMap();
         while (c.moveToNext()){
-            trainingExs.put(new Exercice(c.getString(exerciseName), c.getFloat(exerciseCaloriesPerMin), c.getString(exerciseDescription)), c.getInt(exerciseReps));
+            trainingExs.put(new Exercice(c.getString(exerciseName), c.getFloat(exerciseCaloriesPerMin)), c.getInt(exerciseReps));
         };
 
-        Training training= new Training(trainingExs);
-
-        return training;
-    }*/
+        return new Training(trainingExs);
+    }
 
 
     public User checkLogin(String username, String password) {
@@ -256,7 +250,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CLIENT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + COACH_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + EXERCISE_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + EXERCISE_TRAININGPLAN_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + INGREDIENT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + MEAL_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + NUTRITIONALPLAN_TABLE);

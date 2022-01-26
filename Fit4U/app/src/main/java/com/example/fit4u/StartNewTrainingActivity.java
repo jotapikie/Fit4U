@@ -22,15 +22,14 @@ public class StartNewTrainingActivity extends AppCompatActivity {
     int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
     private int clientID;
     private Training training;
-/*
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_training);
         buttonStartTraining= findViewById(R.id.buttonStartTraining);
-        estimatedTimeUI= findViewById(R.id.texto2);
-        estimatedCaloriesUI=findViewById(R.id.texto3);
-
+        estimatedTimeUI= findViewById(R.id.estimatedTime);
+        estimatedCaloriesUI=findViewById(R.id.estimatedCalories);
         setup();
     }
 
@@ -51,5 +50,5 @@ public class StartNewTrainingActivity extends AppCompatActivity {
             startActivity(intentTraining);
         });
     }
-*/
+
 }
