@@ -30,9 +30,10 @@ public class StartTraning extends AppCompatActivity {
         chronometer= findViewById(R.id.chronometer);
         startStopButton= findViewById(R.id.startStopButton);
         exerciseName= findViewById((R.id.exerciseName1));
-        setup();
+        //setup();
     }
 
+    /*
     public void setup(){
         Bundle bundle = getIntent().getExtras();
         training = bundle.getParcelable("training");
@@ -44,7 +45,7 @@ public class StartTraning extends AppCompatActivity {
 
         });
 
-    }
+    }*/
     public void startChronometer(View v) {
         //ao começar conta o tempo e o texto muda para "stop"
         //https://youtu.be/RLnb4vVkftc

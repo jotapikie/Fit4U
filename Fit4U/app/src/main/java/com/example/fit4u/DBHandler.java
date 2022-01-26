@@ -203,7 +203,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-
+/*
     public Training getTraining(int clientID, int dayOfWeek){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT E."+EXERCISE_NAME_COL+", E."+EXERCISE_REPS_COL+" FROM "+ EXERCISE_TABLE
@@ -214,8 +214,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
         int exerciseReps = c.getColumnIndex(EXERCISE_REPS_COL);
         int exerciseName = c.getColumnIndex(EXERCISE_NAME_COL);
+
         int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_TYPE_CALORIES_COL);
         int exerciseDescription = c.getColumnIndex(EXERCISE_TYPE_DESCRIPTION_COL);
+
         LinkedHashMap<Exercice,Integer> trainingExs= new LinkedHashMap();
         while (c.moveToNext()){
             trainingExs.put(new Exercice(c.getString(exerciseName), c.getFloat(exerciseCaloriesPerMin), c.getString(exerciseDescription)), c.getInt(exerciseReps));
@@ -224,7 +226,7 @@ public class DBHandler extends SQLiteOpenHelper {
         Training training= new Training(trainingExs);
 
         return training;
-    }
+    }*/
 
 
     public User checkLogin(String username, String password) {

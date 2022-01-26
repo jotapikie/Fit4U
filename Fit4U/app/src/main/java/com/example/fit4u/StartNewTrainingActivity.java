@@ -22,7 +22,7 @@ public class StartNewTrainingActivity extends AppCompatActivity {
     int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
     private int clientID;
     private Training training;
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,5 +51,5 @@ public class StartNewTrainingActivity extends AppCompatActivity {
             startActivity(intentTraining);
         });
     }
-
+*/
 }
