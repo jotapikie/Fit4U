@@ -186,9 +186,9 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO TrainingPlan VALUES(3, 2,1);");
         db.execSQL("INSERT INTO TrainingPlan VALUES(4, 3,2);");
         db.execSQL("INSERT INTO TrainingPlan VALUES(5, 4,2);");
-        db.execSQL("INSERT INTO Exercise VALUES(1, 5,1,\"ex1\",2,55);");
+        db.execSQL("INSERT INTO Exercise VALUES(1, 6,1,\"ex1\",2,55);");
         db.execSQL("INSERT INTO Exercise VALUES(2, 4,1,\"ex2\",3,10);");
-        db.execSQL("INSERT INTO Exercise VALUES(3, 5,2,\"ex3\",4,15);");
+        db.execSQL("INSERT INTO Exercise VALUES(3, 6,2,\"ex3\",4,15);");
         db.execSQL("INSERT INTO Exercise VALUES(4, 2,2,\"ex4\",1,30);");
         db.execSQL("INSERT INTO Exercise VALUES(5, 1,3,\"ex5\",3,60);");
         db.execSQL("INSERT INTO Exercise VALUES(6, 7,4,\"ex6\",5,51);");

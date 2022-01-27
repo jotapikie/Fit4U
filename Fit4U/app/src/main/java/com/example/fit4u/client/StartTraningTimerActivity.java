@@ -1,6 +1,7 @@
 package com.example.fit4u.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.BaseMenuPresenter;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -32,22 +33,32 @@ public class StartTraningTimerActivity extends AppCompatActivity {
     private TextView timerView;
     private Button startStopButton;
     private TextView exerciseName;
-    private boolean running=true;
+    private boolean running = true;
     private Training training;
     private TextView congratzView;
+    private Semaphore semaphore;
+    private Semaphore congratzSem;
 
     private MediaPlayer nextExerciseSound;
-    private MediaPlayer congratz ;
+    private MediaPlayer congratz;
 
 
     @Override
     protected synchronized void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_traning);
-        timerView= findViewById(R.id.chronometer);
-        startStopButton= findViewById(R.id.startStopButton);
-        exerciseName= findViewById((R.id.exerciseName1));
-        congratzView= findViewById(R.id.congratz);
+        timerView = findViewById(R.id.chronometer);
+        startStopButton = findViewById(R.id.startStopButton);
+        exerciseName = findViewById((R.id.exerciseName1));
+        congratzView = findViewById(R.id.congratz);
+        semaphore = new Semaphore(1, true);
+        congratzSem = new Semaphore(1, true);
+        try {
+            congratzSem.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         try {
             setup();
         } catch (InterruptedException e) {
@@ -58,71 +69,72 @@ public class StartTraningTimerActivity extends AppCompatActivity {
 
     public synchronized void setup() throws InterruptedException {
         Bundle bundle = getIntent().getExtras();
-        nextExerciseSound= MediaPlayer.create(this, R.raw.next_exercise);
-        congratz= MediaPlayer.create(this, R.raw.congratz);
+        nextExerciseSound = MediaPlayer.create(this, R.raw.next_exercise);
+        congratz = MediaPlayer.create(this, R.raw.congratz);
         training = new Training((HashMap<Exercice, Integer>) bundle.getSerializable("training"));
-        String caloriesMessage="Congratulations!\n\nYou lost "+training.getTotalCaloriesBurned()+" calories today!";
+        String caloriesMessage = "Congratulations!\n\nYou lost " + training.getTotalCaloriesBurned() + " calories today!";
         congratzView.setText(caloriesMessage);
-        for (Map.Entry<Exercice,Integer> entry: training.getPlan().entrySet()){
-            mTimeLeftInMillis= entry.getValue()*60000;
-            String exName= entry.getKey().getName();
-            exerciseName.setText(exName);
-            int minutes= (int) (mTimeLeftInMillis / 1000) / 60;
-            int seconds= (int) (mTimeLeftInMillis / 1000) % 60;
-            String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes,seconds);
-            timerView.setText(timeLeftFormatted);
-            nextExerciseSound.start();
-        }
-        startStopButton.setOnClickListener(view -> {
-            if (running){
-                startTimer();
-            }else{
-                stopTimer();
-            }
-        });
+        new Thread() {
+            public void run(){
+                for(Map.Entry<Exercice, Integer> entry :training.getPlan().entrySet()){
+                    new Thread() {
+                        public void run() {
+                            mTimeLeftInMillis = entry.getValue() * 60000;
+                            String exName = entry.getKey().getName();
+                            exerciseName.setText(exName);
+                            int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+                            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+                            timerView.setText(timeLeftFormatted);
+                            nextExerciseSound.start();
+                            try {
+                                semaphore.acquire();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            startStopButton.setOnClickListener(view -> {
+                                if (running) {
+                                    startTimer();
+                                } else {
+                                    stopTimer();
+                                }
+                            });
+                            congratz.start();
+                            congratzView.setVisibility(View.VISIBLE);
+                        }
 
+                        public synchronized void startTimer() {
+                            chronometer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+                                @Override
+                                public void onTick(long l) {
+                                    mTimeLeftInMillis = l;
+                                    updateCountDownText();
+                                }
+
+                                @Override
+                                public void onFinish() {
+                                    semaphore.release();
+                                }
+                            };
+                            running = false;
+                            startStopButton.setText("Pause");
+                        }
+
+
+                        private synchronized void stopTimer() {
+                            chronometer.cancel();
+                            running = true;
+                            startStopButton.setText("Resume");
+                        }
+
+                        private synchronized void updateCountDownText() {
+                            int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+                            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+                            timerView.setText(timeLeftFormatted);
+                        }
+                    }.start();
+                }
+            }}.start();
     }
-
-
-    public synchronized void forEachExer() throws InterruptedException {
-
-    }
-
-    public synchronized void startTimer() {
-        chronometer = new CountDownTimer(mTimeLeftInMillis, 1000) {
-            @Override
-            public void onTick(long l) {
-                mTimeLeftInMillis= l;
-                updateCountDownText();
-            }
-
-            @Override
-            public void onFinish() {
-                congratz.start();
-                congratzView.setVisibility(View.VISIBLE);
-
-            }
-        }.start();
-        running=false;
-        startStopButton.setText("Pause");
-
-    }
-
-
-    private synchronized void stopTimer(){
-        chronometer.cancel();
-        running=true;
-        startStopButton.setText("Resume");
-
-    }
-
-    private synchronized void updateCountDownText(){
-        int minutes= (int) (mTimeLeftInMillis / 1000) / 60;
-        int seconds= (int) (mTimeLeftInMillis / 1000) % 60;
-        String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes,seconds);
-        timerView.setText(timeLeftFormatted);
-    }
-
-
-
 }
