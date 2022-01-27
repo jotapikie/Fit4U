@@ -9,8 +9,12 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fit4u.DBHandler;
+import com.example.fit4u.MyListAdapter;
+import com.example.fit4u.MyListData;
 import com.example.fit4u.R;
 
 import domain.Training;
@@ -54,6 +58,24 @@ public class StartNewTrainingActivity extends AppCompatActivity {
             intentTraining.putExtra("training",  training.getPlan());
             startActivity(intentTraining);
         });
+
+        MyListData[] myListData = new MyListData[]{
+                new MyListData("Ex1"),
+                new MyListData("Ex1"),
+                new MyListData("Ex3"),
+                new MyListData("Ex4"),
+                new MyListData("Ex5"),
+                new MyListData("Ex6"),
+                new MyListData("Ex7"),
+        };
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        MyListAdapter adapter = new MyListAdapter(myListData);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+
     }
 
 }

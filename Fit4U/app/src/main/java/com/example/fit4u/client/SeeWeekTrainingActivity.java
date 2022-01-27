@@ -13,7 +13,7 @@ public class SeeWeekTrainingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_training);
+        setContentView(R.layout.activity_week_training);
         MyListData[] myListData = new MyListData[]{
                 new MyListData("Ex1"),
                 new MyListData("Ex2"),
@@ -25,7 +25,7 @@ public class SeeWeekTrainingActivity extends AppCompatActivity {
         };
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        MyListAdapter adapter = new MyListAdapter(myListData);
+        MyListAdapter2 adapter = new MyListAdapter2(myListData);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

@@ -61,9 +61,9 @@
 
     <fragment
         android:id="@+id/seeTrainingPlanFragment"
-        android:name="com.example.fit4u.client.SeeWeekTrainingActivity"
+        android:name="com.example.fit4u.client.ShowTrainingBeforeStartActivity"
         android:label="home"
-        tools:layout="@layout/activity_new_training">
+        tools:layout="@layout/activity_week_training">
     </fragment>
 
     <fragment
