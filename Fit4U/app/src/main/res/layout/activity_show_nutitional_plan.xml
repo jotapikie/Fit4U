@@ -72,7 +72,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/ex1"
                         android:src="@drawable/breakfast" />
+
                     <TextView
+                        android:id="@+id/kcalBreakfast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -80,11 +82,11 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
+                        android:layout_toRightOf="@id/ex1"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
                         android:textColor="#FFFFFF"
-                        android:layout_toRightOf="@id/ex1"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
@@ -120,7 +122,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/ex2"
                         android:src="@drawable/snack" />
+
                     <TextView
+                        android:id="@+id/kcalMorningSnack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -128,11 +132,11 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
+                        android:layout_toRightOf="@id/ex2"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
                         android:textColor="#FFFFFF"
-                        android:layout_toRightOf="@id/ex2"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
@@ -168,7 +172,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/ex3"
                         android:src="@drawable/refeicao" />
+
                     <TextView
+                        android:id="@+id/kcalLunch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -176,11 +182,11 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
+                        android:layout_toRightOf="@id/ex3"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
                         android:textColor="#FFFFFF"
-                        android:layout_toRightOf="@id/ex3"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
@@ -216,7 +222,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/ex4"
                         android:src="@drawable/snack" />
+
                     <TextView
+                        android:id="@+id/kcalAfternoonSnack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -224,11 +232,11 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
+                        android:layout_toRightOf="@id/ex4"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
                         android:textColor="#FFFFFF"
-                        android:layout_toRightOf="@id/ex4"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
@@ -264,7 +272,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/ex5"
                         android:src="@drawable/refeicao" />
+
                     <TextView
+                        android:id="@+id/kcalDinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -272,11 +282,11 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
+                        android:layout_toRightOf="@id/ex5"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
                         android:textColor="#FFFFFF"
-                        android:layout_toRightOf="@id/ex5"
                         android:textSize="20sp" />
                 </RelativeLayout>
 

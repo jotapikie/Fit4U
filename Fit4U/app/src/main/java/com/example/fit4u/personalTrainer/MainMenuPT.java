@@ -4,13 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.fit4u.R;
-import com.example.fit4u.client.SeeNutritionalPlanActivity;
-import com.example.fit4u.client.SeeWeekTrainingActivity;
-import com.example.fit4u.client.StartNewTrainingActivity;
 
 public class MainMenuPT extends AppCompatActivity {
 
@@ -43,7 +39,7 @@ public class MainMenuPT extends AppCompatActivity {
         Intent intentCreateTrainingPlan = new Intent(this, CreateTrainingPlanActivity.class);
         Intent intentCreateNutritionalPlan = new Intent(this, CreateNutritionalPlanActivity.class);
         Intent intentAnexUser = new Intent(this, AnexUserActivity.class);
-        Intent intentChangeNutritionalPlan = new Intent(this, ChangeNutritionalPlanActivity.class);
+        Intent intentChangeNutritionalPlan = new Intent(this, ChangeTrainingPlanActivity.class);
 
         buttonCreateTrainingPlan.setOnClickListener(view -> {
             intentCreateTrainingPlan.putExtra("key", username);

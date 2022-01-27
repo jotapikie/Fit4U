@@ -71,5 +71,45 @@
         android:name="com.example.fit4u.personalTrainer.MainMenuPT"
         android:label="home"
         tools:layout="@layout/activity_main_menu_pt">
+        <action
+            android:id="@+id/menuToCreateTrainingFragment"
+            app:destination="@id/createTrainingPlanFragment" />
+        <action
+            android:id="@+id/menuToCreateNutritionalPlanFragment"
+            app:destination="@id/createNutritionalPlanFragment" />
+        <action
+            android:id="@+id/menuToAnexUser"
+            app:destination="@id/anexUserFragment" />
+        <action
+            android:id="@+id/menuToChangeTrainingPlan"
+            app:destination="@id/changeTrainingPlanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createTrainingPlanFragment"
+        android:name="com.example.fit4u.personalTrainer.CreateTrainingPlanActivity"
+        android:label="home"
+        tools:layout="@layout/activity_create_training_plan">
+    </fragment>
+
+    <fragment
+        android:id="@+id/createNutritionalPlanFragment"
+        android:name="com.example.fit4u.personalTrainer.CreateNutritionalPlanActivity"
+        android:label="home"
+        tools:layout="@layout/activity_create_nutritional_plan">
+    </fragment>
+
+    <fragment
+        android:id="@+id/anexUserFragment"
+        android:name="com.example.fit4u.personalTrainer.AnexUserActivity"
+        android:label="home"
+        tools:layout="@layout/activity_anex_user">
+    </fragment>
+
+    <fragment
+        android:id="@+id/changeTrainingPlanFragment"
+        android:name="com.example.fit4u.personalTrainer.ChangeTrainingPlanActivity"
+        android:label="home"
+        tools:layout="@layout/activity_change_training_plan">
     </fragment>
 </navigation>
