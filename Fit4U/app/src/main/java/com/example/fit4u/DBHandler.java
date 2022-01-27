@@ -161,7 +161,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(createNutritionalPlanMealTable);
         db.execSQL(createTrainingPlanTable);
         db.execSQL(createUserTable);
-        db.execSQL("INSERT INTO User VALUES(1, \"user1\",\"password\",\"user1FullName\",1);\n" +
+        String s  = "INSERT INTO User VALUES(1, \"user1\",\"password\",\"user1FullName\",1);\n" +
                 "INSERT INTO User VALUES(2, \"user2\",\"password\",\"user2FullName\",1);\n" +
                 "INSERT INTO User VALUES(3, \"user3\",\"password\",\"user3FullName\",1);\n" +
                 "INSERT INTO User VALUES(4, \"user4\",\"password\",\"user4FullName\",1);\n" +
@@ -209,8 +209,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 "INSERT INTO Ingredient VALUES(1, 1,10);\n" +
                 "INSERT INTO Ingredient VALUES(2, 2,20);\n" +
                 "INSERT INTO Ingredient VALUES(3, 3,40);\n" +
-                "INSERT INTO Ingredient VALUES(4, 4,80);");
-        System.out.println("||||||||||||||||||||||||insert feito");
+                "INSERT INTO Ingredient VALUES(4, 4,80);";
+        db.execSQL(s);
+        System.out.println(s);
 
     }
 
