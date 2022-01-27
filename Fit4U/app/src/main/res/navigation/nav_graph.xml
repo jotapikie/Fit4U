@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/MainMenuUserFragment"
-        android:name="com.example.fit4u.MainMenuUser"
+        android:name="com.example.fit4u.client.MainMenuUser"
         android:label="home"
         tools:layout="@layout/activity_main_menu_user">
         <action
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/StartNewTrainingFragment"
-        android:name="com.example.fit4u.StartNewTrainingActivity"
+        android:name="com.example.fit4u.client.StartNewTrainingActivity"
         android:label="home"
         tools:layout="@layout/activity_show_training">
         <action
@@ -47,21 +47,21 @@
 
     <fragment
         android:id="@+id/startTrainingFragment"
-        android:name="com.example.fit4u.StartTraning"
+        android:name="com.example.fit4u.client.StartTraningTimerActivity"
         android:label="home"
         tools:layout="@layout/activity_start_traning">
     </fragment>
 
     <fragment
         android:id="@+id/seeNutritionalPlanFragment"
-        android:name="com.example.fit4u.SeeNutritionalPlanActivity"
+        android:name="com.example.fit4u.client.SeeNutritionalPlanActivity"
         android:label="home"
         tools:layout="@layout/activity_show_nutitional_plan">
     </fragment>
 
     <fragment
         android:id="@+id/seeTrainingPlanFragment"
-        android:name="com.example.fit4u.SeeWeekTrainingActivity"
+        android:name="com.example.fit4u.client.SeeWeekTrainingActivity"
         android:label="home"
         tools:layout="@layout/activity_new_training">
     </fragment>

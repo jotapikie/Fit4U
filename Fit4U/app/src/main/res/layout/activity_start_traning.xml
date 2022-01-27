@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".StartTraning">
+    tools:context=".client.StartTraningTimerActivity">
 
     <RelativeLayout
         android:id="@+id/rlMain"

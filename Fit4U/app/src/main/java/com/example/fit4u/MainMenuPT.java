@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.fit4u.client.SeeNutritionalPlanActivity;
+import com.example.fit4u.client.SeeWeekTrainingActivity;
+import com.example.fit4u.client.StartNewTrainingActivity;
+
 public class MainMenuPT extends AppCompatActivity {
 
     private String username;
@@ -32,7 +36,7 @@ public class MainMenuPT extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("username");
         usernameView.setText(username);
-        Intent intentStartNewTraining = new Intent(this,StartNewTrainingActivity.class);
+        Intent intentStartNewTraining = new Intent(this, StartNewTrainingActivity.class);
         Intent intentSeeNutritionalPlan = new Intent(this, SeeNutritionalPlanActivity.class);
         Intent intentSeeWeekTrainings = new Intent(this, SeeWeekTrainingActivity.class);
 

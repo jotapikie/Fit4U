@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fit4U">
         <activity
-            android:name=".StartTraning"
+            android:name=".client.StartTraningTimerActivity"
             android:exported="false" />
         <activity
             android:name=".MainMenuPT"
             android:exported="false" />
         <activity
-            android:name=".MainMenuUser"
+            android:name=".client.MainMenuUser"
             android:exported="false" />
         <activity
-            android:name=".SeeNutritionalPlanActivity"
+            android:name=".client.SeeNutritionalPlanActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="package.HomeActivity" />
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SeeWeekTrainingActivity"
+            android:name=".client.SeeWeekTrainingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartNewTrainingActivity"
+            android:name=".client.StartNewTrainingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="package.HomeActivity" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".SeeWeekTrainingActivity">
+    tools:context=".client.SeeWeekTrainingActivity">
 
     <RelativeLayout
         android:id="@+id/rll"
@@ -81,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/texto4"
                 android:scrollbars="vertical"
-                tools:context=".SeeWeekTrainingActivity" />
+                tools:context=".client.SeeWeekTrainingActivity" />
 
         </RelativeLayout>
 

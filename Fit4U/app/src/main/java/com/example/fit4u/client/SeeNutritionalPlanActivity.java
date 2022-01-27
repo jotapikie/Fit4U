@@ -1,8 +1,10 @@
-package com.example.fit4u;
+package com.example.fit4u.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.fit4u.R;
 
 public class SeeNutritionalPlanActivity extends AppCompatActivity {
 

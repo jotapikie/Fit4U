@@ -1,15 +1,16 @@
-package com.example.fit4u;
+package com.example.fit4u.client;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.fit4u.DBHandler;
+import com.example.fit4u.R;
 
 import domain.Training;
 
@@ -44,7 +45,7 @@ public class StartNewTrainingActivity extends AppCompatActivity {
         estimatedTimeUI.setText(sTime);
         estimatedCaloriesUI.setText(sCalories);
 
-        Intent intentTraining = new Intent(this,StartTraning.class);
+        Intent intentTraining = new Intent(this, StartTraningTimerActivity.class);
         buttonStartTraining.setOnClickListener(view -> {
             intentTraining.putExtra("training", (Parcelable) training);
             startActivity(intentTraining);

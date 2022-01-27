@@ -1,4 +1,4 @@
-package com.example.fit4u;
+package com.example.fit4u.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fit4u.R;
+
 import org.w3c.dom.Text;
 
 import java.util.Locale;
@@ -20,7 +22,7 @@ import domain.Exercice;
 import domain.Training;
 import domain.User;
 
-public class StartTraning extends AppCompatActivity {
+public class StartTraningTimerActivity extends AppCompatActivity {
 
     private long mTimeLeftInMillis;
     private CountDownTimer chronometer;
@@ -30,7 +32,7 @@ public class StartTraning extends AppCompatActivity {
     private boolean running=false;
     private boolean next;
 
-    final MediaPlayer nextExerciseSound = MediaPlayer.create(this, R.raw.nextExercise);
+    final MediaPlayer nextExerciseSound = MediaPlayer.create(this, R.raw.next_exercise);
     final MediaPlayer congratz = MediaPlayer.create(this, R.raw.congratz);
 
 

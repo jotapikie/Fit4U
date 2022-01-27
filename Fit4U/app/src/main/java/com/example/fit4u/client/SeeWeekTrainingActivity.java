@@ -1,10 +1,14 @@
-package com.example.fit4u;
+package com.example.fit4u.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.fit4u.MyListAdapter;
+import com.example.fit4u.MyListData;
+import com.example.fit4u.R;
 
 public class SeeWeekTrainingActivity extends AppCompatActivity {
 

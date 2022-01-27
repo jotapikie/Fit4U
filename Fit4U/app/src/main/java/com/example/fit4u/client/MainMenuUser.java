@@ -1,14 +1,12 @@
-package com.example.fit4u;
+package com.example.fit4u.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Pair;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.fit4u.R;
 
 public class MainMenuUser extends AppCompatActivity {
 
@@ -38,7 +36,7 @@ public class MainMenuUser extends AppCompatActivity {
         username = bundle.getString("username");
         clientID = bundle.getInt("clientID");
         usernameView.setText(username);
-        Intent intentStartNewTraining = new Intent(this,StartNewTrainingActivity.class);
+        Intent intentStartNewTraining = new Intent(this, StartNewTrainingActivity.class);
         Intent intentSeeNutritionalPlan = new Intent(this, SeeNutritionalPlanActivity.class);
         Intent intentSeeWeekTrainings = new Intent(this, SeeWeekTrainingActivity.class);
 
