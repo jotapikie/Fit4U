@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.fit4u.DBHandler;
 import com.example.fit4u.R;
 
 public class MainMenuUser extends AppCompatActivity {

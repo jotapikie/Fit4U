@@ -39,7 +39,6 @@ public class StartNewTrainingActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         clientID = bundle.getInt("clientID");
         training = dbHandler.getTraining(clientID, dayOfWeek);
-        //adapter = new ArrayAdapter<>(StartNewTrainingActivity.this, android.R.layout);
         String sTime="Estimated time:"+training.getDuration().first+":"+training.getDuration().second;
         String sCalories="Estimated calories to be burned: "+training.getTotalCaloriesBurned()+" kCal";
         estimatedTimeUI.setText(sTime);
