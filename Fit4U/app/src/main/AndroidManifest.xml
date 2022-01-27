@@ -13,32 +13,59 @@
         android:theme="@style/Theme.Fit4U">
         <activity
             android:name=".client.StartTraningTimerActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="package.StartTraningTimerActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".personalTrainer.MainMenuPT"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="package.MainMenuPT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".client.MainMenuUser"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="package.MainMenuUser" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".client.SeeNutritionalPlanActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="package.SeeNutritionalPlanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".client.SeeWeekTrainingActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="package.SeeWeekTrainingActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".client.StartNewTrainingActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="package.StartNewTrainingActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.fit4u.LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="package.LoginActivity" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

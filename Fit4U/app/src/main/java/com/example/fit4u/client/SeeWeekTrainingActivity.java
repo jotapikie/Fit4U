@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.fit4u.MyListAdapter;
-import com.example.fit4u.MyListData;
+//import com.example.fit4u.MyListAdapter;
+//import com.example.fit4u.MyListData;
 import com.example.fit4u.R;
 
 public class SeeWeekTrainingActivity extends AppCompatActivity {
@@ -15,8 +15,8 @@ public class SeeWeekTrainingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        MyListData[] myListData = new MyListData[] {
+        setContentView(R.layout.activity_show_training);
+     /*   MyListData[] myListData = new MyListData[] {
                 new MyListData("Email", android.R.drawable.ic_dialog_email),
                 new MyListData("Info", android.R.drawable.ic_dialog_info),
                 new MyListData("Delete", android.R.drawable.ic_delete),
@@ -29,12 +29,12 @@ public class SeeWeekTrainingActivity extends AppCompatActivity {
                 new MyListData("Dialer", android.R.drawable.ic_dialog_dialer),
                 new MyListData("Alert", android.R.drawable.ic_dialog_alert),
                 new MyListData("Map", android.R.drawable.ic_dialog_map),
-        };
+        };*/
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        MyListAdapter adapter = new MyListAdapter(myListData);
+       // MyListAdapter adapter = new MyListAdapter(myListData);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+       // recyclerView.setAdapter(adapter);
     }
 }

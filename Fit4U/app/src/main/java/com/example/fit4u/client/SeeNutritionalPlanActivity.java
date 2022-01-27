@@ -45,13 +45,13 @@ public class SeeNutritionalPlanActivity extends AppCompatActivity {
     protected void setup(){
         Bundle bundle = getIntent().getExtras();
         clientID = bundle.getInt("clientID");
-        mealDay = dbHandler.getMealDay(clientID, dayOfWeek);
-        kcalBreakfast= mealDay.
+      //  mealDay = dbHandler.getMealDay(clientID, dayOfWeek);
+     //   kcalBreakfast= mealDay.
 
-        Intent intentTraining = new Intent(this, StartTraningTimerActivity.class);
-        buttonStartTraining.setOnClickListener(view -> {
-            intentTraining.putExtra("training", (Parcelable) training);
-            startActivity(intentTraining);
-        });
+      //  Intent intentTraining = new Intent(this, StartTraningTimerActivity.class);
+      //  buttonStartTraining.setOnClickListener(view -> {
+      //      intentTraining.putExtra("training", (Parcelable) training);
+     //       startActivity(intentTraining);
+     //   });
     }
 }
