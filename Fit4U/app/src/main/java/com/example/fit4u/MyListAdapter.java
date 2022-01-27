@@ -1,6 +1,7 @@
 package com.example.fit4u;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,11 @@ import android.widget.Toast;
 
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
+
     private MyListData[] listdata;
 
-    // RecyclerView recyclerView;
+    RecyclerView recyclerView;
+
     public MyListAdapter(MyListData[] listdata) {
         this.listdata = listdata;
     }
@@ -30,7 +33,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         final MyListData myListData = listdata[position];
         holder.textView.setText(listdata[position].getDescription());
-        holder.imageView.setImageResource(listdata[position].getImgId());
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +54,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.imageView = (ImageView) itemView.findViewById(R.id.imageView);
             this.textView = (TextView) itemView.findViewById(R.id.textView);
             relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relativeLayout);
         }
