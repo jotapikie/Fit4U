@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intentTrainer = new Intent(this, MainMenuPT.class);
         loginButton.setOnClickListener(view -> {
             User result = dbHandler.checkLogin(usernameEditTest.getText().toString(), passwordEditTest.getText().toString());
-            if (result == null) {
+            if (result==null) {
                 Toast.makeText(getApplicationContext(), "wrong username or password", Toast.LENGTH_LONG).show();
             } else {
                 if (result.getType() == 0) {
