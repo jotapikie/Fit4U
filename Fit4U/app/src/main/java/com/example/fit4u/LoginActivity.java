@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
             if (result==null) {
                 Toast.makeText(getApplicationContext(), "wrong username or password", Toast.LENGTH_LONG).show();
             } else {
-                if (result.getType() == 0) {
+                if (result.getType() == 1) {
                     intentClient.putExtra("clientID", result.getID());
                     intentClient.putExtra("username", result.getUsername());
                     startActivity(intentClient);

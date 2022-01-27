@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,14 +40,18 @@ public class StartNewTrainingActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         clientID = bundle.getInt("clientID");
         training = dbHandler.getTraining(clientID, dayOfWeek);
-        String sTime="Estimated time:"+training.getDuration().first+":"+training.getDuration().second;
+        if (training==null){
+            finish();
+        }
+        String timeFormatted = String.format(Locale.getDefault(),"%02d:%02d", training.getDuration().first,training.getDuration().second);
+        String sTime="Estimated time:  "+timeFormatted;
         String sCalories="Estimated calories to be burned: "+training.getTotalCaloriesBurned()+" kCal";
         estimatedTimeUI.setText(sTime);
         estimatedCaloriesUI.setText(sCalories);
 
         Intent intentTraining = new Intent(this, StartTraningTimerActivity.class);
         buttonStartTraining.setOnClickListener(view -> {
-            intentTraining.putExtra("training", (Parcelable) training);
+            intentTraining.putExtra("training",  training.getPlan());
             startActivity(intentTraining);
         });
     }

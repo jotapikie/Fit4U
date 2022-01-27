@@ -73,7 +73,10 @@
         android:gravity="center"
         android:text="Congratulations!\n\nYou lost 500 calories today!"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:visibility="invisible"
+        tools:visibility="invisible"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

@@ -149,6 +149,16 @@ public class DBHandler extends SQLiteOpenHelper {
                 + MEAL_TYPEOFMEAL_COL + " INTEGER(10)" + ")";
 
 
+        db.execSQL("DROP TABLE IF EXISTS " + CLIENT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + COACH_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + EXERCISE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + INGREDIENT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + MEAL_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + NUTRITIONALPLAN_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + NUTRITIONALPLAN_MEAL_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + TRAININGPLAN_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE);
+
         db.execSQL(createClientTable);
         db.execSQL(createCoachTable);
         db.execSQL(createExerciseTable);
@@ -160,54 +170,46 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(createUserTable);
         db.execSQL("INSERT INTO User VALUES(1, \"user1\",\"password\",\"user1FullName\",1);");
         db.execSQL("INSERT INTO User VALUES(2, \"user2\",\"password\",\"user2FullName\",1);");
-        db.execSQL("INSERT INTO User VALUES(2, \"user2\",\"password\",\"user2FullName\",1);");
         db.execSQL("INSERT INTO User VALUES(3, \"user3\",\"password\",\"user3FullName\",1);");
-                "INSERT INTO User VALUES(4, \"user4\",\"password\",\"user4FullName\",1);\n" +
-                "INSERT INTO User VALUES(5, \"user5\",\"password\",\"user5FullName\",2);\n" +
-                "INSERT INTO User VALUES(6, \"user6\",\"password\",\"user6FullName\",2);\n" +
-                "\n" +
-                "INSERT INTO Coach VALUES(1, 5);\n" +
-                "INSERT INTO Coach VALUES(2, 6);\n" +
-                "\n" +
-                "INSERT INTO Client VALUES(1, 1,1);\n" +
-                "INSERT INTO Client VALUES(2, NULL,2);\n" +
-                "INSERT INTO Client VALUES(3, 2,3);\n" +
-                "INSERT INTO Client VALUES(4, 2,4);\n" +
-                "\n" +
-                "INSERT INTO TrainingPlan VALUES(1, 1,4,1);\n" +
-                "INSERT INTO TrainingPlan VALUES(2, 1,6,1);\n" +
-                "INSERT INTO TrainingPlan VALUES(3, 2,3,1);\n" +
-                "INSERT INTO TrainingPlan VALUES(4, 3,3,2);\n" +
-                "INSERT INTO TrainingPlan VALUES(5, 4,7,2);\n" +
-                "\n" +
-                "INSERT INTO Exercise VALUES(1, 5,1,\"ex1\",2,55);\n" +
-                "INSERT INTO Exercise VALUES(2, 4,1,\"ex2\",3,10);\n" +
-                "INSERT INTO Exercise VALUES(3, 5,2,\"ex3\",4,15);\n" +
-                "INSERT INTO Exercise VALUES(4, 2,2,\"ex4\",1,30);\n" +
-                "INSERT INTO Exercise VALUES(5, 1,3,\"ex5\",3,60);\n" +
-                "INSERT INTO Exercise VALUES(6, 7,4,\"ex6\",5,51);\n" +
-                "INSERT INTO Exercise VALUES(7, 2,4,\"ex7\",2,20);\n" +
-                "INSERT INTO Exercise VALUES(8, 3,5,\"ex8\",2,25);\n" +
-                "\n" +
-                "INSERT INTO NutritionalPlan VALUES(1, 1);\n" +
-                "INSERT INTO NutritionalPlan VALUES(2, 2);\n" +
-                "INSERT INTO NutritionalPlan VALUES(3, 3);\n" +
-                "INSERT INTO NutritionalPlan VALUES(4, 4);\n" +
-                "\n" +
-                "INSERT INTO NutritionalPlan_Meal VALUES(1, 1,4);\n" +
-                "INSERT INTO NutritionalPlan_Meal VALUES(2, 2,3);\n" +
-                "INSERT INTO NutritionalPlan_Meal VALUES(3, 3,2);\n" +
-                "INSERT INTO NutritionalPlan_Meal VALUES(4, 4,1);\n" +
-                "\n" +
-                "INSERT INTO Meal VALUES(1, \"nomeReceita1\",\"receita1\",300,2);\n" +
-                "INSERT INTO Meal VALUES(2, \"nomeReceita2\",\"receita2\",400,3);\n" +
-                "INSERT INTO Meal VALUES(3, \"nomeReceita3\",\"receita3\",400,1);\n" +
-                "INSERT INTO Meal VALUES(4, \"nomeReceita4\",\"receita4\",400,4);\n" +
-                "\n" +
-                "INSERT INTO Ingredient VALUES(1, 1,10);\n" +
-                "INSERT INTO Ingredient VALUES(2, 2,20);\n" +
-                "INSERT INTO Ingredient VALUES(3, 3,40);\n" +
-                "INSERT INTO Ingredient VALUES(4, 4,80);");*/
+        db.execSQL("INSERT INTO User VALUES(4, \"user4\",\"password\",\"user4FullName\",1);");
+        db.execSQL("INSERT INTO User VALUES(5, \"user5\",\"password\",\"user5FullName\",2);");
+        db.execSQL("INSERT INTO User VALUES(6, \"user6\",\"password\",\"user6FullName\",2);");
+        db.execSQL("INSERT INTO Coach VALUES(1, 5);");
+        db.execSQL("INSERT INTO Coach VALUES(2, 6);");
+        db.execSQL("INSERT INTO Client VALUES(1, 1,1);");
+        db.execSQL("INSERT INTO Client VALUES(2, NULL,2)");
+        db.execSQL("INSERT INTO Client VALUES(3, 2,3)");
+        db.execSQL("INSERT INTO Client VALUES(4, 2,4)");
+
+        db.execSQL("INSERT INTO TrainingPlan VALUES(1, 1,1);");
+        db.execSQL("INSERT INTO TrainingPlan VALUES(2, 1,1);");
+        db.execSQL("INSERT INTO TrainingPlan VALUES(3, 2,1);");
+        db.execSQL("INSERT INTO TrainingPlan VALUES(4, 3,2);");
+        db.execSQL("INSERT INTO TrainingPlan VALUES(5, 4,2);");
+        db.execSQL("INSERT INTO Exercise VALUES(1, 5,1,\"ex1\",2,55);");
+        db.execSQL("INSERT INTO Exercise VALUES(2, 4,1,\"ex2\",3,10);");
+        db.execSQL("INSERT INTO Exercise VALUES(3, 5,2,\"ex3\",4,15);");
+        db.execSQL("INSERT INTO Exercise VALUES(4, 2,2,\"ex4\",1,30);");
+        db.execSQL("INSERT INTO Exercise VALUES(5, 1,3,\"ex5\",3,60);");
+        db.execSQL("INSERT INTO Exercise VALUES(6, 7,4,\"ex6\",5,51);");
+        db.execSQL("INSERT INTO Exercise VALUES(7, 2,4,\"ex7\",2,20);");
+        db.execSQL("INSERT INTO Exercise VALUES(8, 3,5,\"ex8\",2,25);");
+        db.execSQL("INSERT INTO NutritionalPlan VALUES(1, 1);");
+        db.execSQL("INSERT INTO NutritionalPlan VALUES(2, 2);");
+        db.execSQL("INSERT INTO NutritionalPlan VALUES(3, 3);");
+        db.execSQL("INSERT INTO NutritionalPlan VALUES(4, 4);");
+        db.execSQL("INSERT INTO NutritionalPlan_Meal VALUES(1, 1,4);");
+        db.execSQL("INSERT INTO NutritionalPlan_Meal VALUES(2, 2,3);");
+        db.execSQL("INSERT INTO NutritionalPlan_Meal VALUES(3, 3,2);");
+        db.execSQL("INSERT INTO NutritionalPlan_Meal VALUES(4, 4,1);");
+        db.execSQL("INSERT INTO Meal VALUES(1, \"nomeReceita1\",\"receita1\",300,2);");
+        db.execSQL("INSERT INTO Meal VALUES(2, \"nomeReceita2\",\"receita2\",400,3);");
+        db.execSQL("INSERT INTO Meal VALUES(3, \"nomeReceita3\",\"receita3\",400,1);");
+        db.execSQL("INSERT INTO Meal VALUES(4, \"nomeReceita4\",\"receita4\",400,4);");
+        db.execSQL("INSERT INTO Ingredient VALUES(1, 1,10);");
+        db.execSQL("INSERT INTO Ingredient VALUES(2, 2,20);");
+        db.execSQL("INSERT INTO Ingredient VALUES(3, 3,40);");
+        db.execSQL("INSERT INTO Ingredient VALUES(4, 4,80);");
 
 
         System.out.println("||||||||||||||||||||||||insert feito");
@@ -231,19 +233,23 @@ public class DBHandler extends SQLiteOpenHelper {
         try {
             Cursor c = MyDB.rawQuery("SELECT E." + EXERCISE_NAME_COL + ", E." + EXERCISE_REPS_COL + ", E." + EXERCISE_CALORIESPERMIN_COL + " FROM " + EXERCISE_TABLE
                     + " E inner join " + TRAININGPLAN_TABLE + " TP on E." + EXERCISE_TRAININGPLANID_COL + " = TP." + TRAININGPLAN_ID_COL + " WHERE E."
-                    + EXERCISE_DAYOFWEEK_COL + " = " + dayOfWeek + " and TP." + TRAININGPLAN_CLIENTID_COL + " = " + clientID + ";", null);
+                    + EXERCISE_DAYOFWEEK_COL + " = '" + dayOfWeek + "' and TP." + TRAININGPLAN_CLIENTID_COL + " = '" + clientID + "';", null);
 
-            int exerciseReps = c.getColumnIndex(EXERCISE_REPS_COL);
-            int exerciseName = c.getColumnIndex(EXERCISE_NAME_COL);
-            int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_CALORIESPERMIN_COL);
+            if (c.getCount()>0) {
+                int exerciseReps = c.getColumnIndex(EXERCISE_REPS_COL);
+                int exerciseName = c.getColumnIndex(EXERCISE_NAME_COL);
+                int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_CALORIESPERMIN_COL);
 
-            LinkedHashMap<Exercice, Integer> trainingExs = new LinkedHashMap();
-            while (c.moveToNext()) {
-                trainingExs.put(new Exercice(c.getString(exerciseName), c.getFloat(exerciseCaloriesPerMin)), c.getInt(exerciseReps));
+                LinkedHashMap<Exercice, Integer> trainingExs = new LinkedHashMap();
+                while (c.moveToNext()) {
+                    trainingExs.put(new Exercice(c.getString(exerciseName), c.getFloat(exerciseCaloriesPerMin)), c.getInt(exerciseReps));
+                }
+
+                return new Training(trainingExs);
+            }else{
+                c.close();
+                return null;
             }
-
-
-            return new Training(trainingExs);
         }catch(Exception e){
             e.printStackTrace();
             return null;

@@ -1,16 +1,19 @@
 package domain;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Pair;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Training {
     private int duration;
-    private LinkedHashMap<Exercice, Integer> plan;
+    private HashMap<Exercice, Integer> plan;
     private int totalCaloriesBurn;
 
-    public Training(LinkedHashMap<Exercice,Integer> plan) {
+    public Training(HashMap<Exercice,Integer> plan) {
         this.plan=plan;
         setDuration(plan);
         setTotalCaloriesBurn();
@@ -19,7 +22,7 @@ public class Training {
 
 
 
-    private void setDuration(LinkedHashMap<Exercice, Integer> plan){
+    private void setDuration(HashMap<Exercice, Integer> plan){
         int duration=0;
         for ( Map.Entry<Exercice,Integer> entry: plan.entrySet()) {
             duration+= entry.getValue();
@@ -35,7 +38,7 @@ public class Training {
         this.totalCaloriesBurn=totalCalories;
     }
 
-    public LinkedHashMap<Exercice, Integer> getPlan() {
+    public HashMap<Exercice, Integer> getPlan() {
         return plan;
     }
 
