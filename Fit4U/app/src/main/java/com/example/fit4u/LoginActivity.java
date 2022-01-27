@@ -1,5 +1,7 @@
 package com.example.fit4u;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -25,11 +27,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         usernameEditTest = findViewById(R.id.username);
         passwordEditTest = findViewById(R.id.password);
         loginButton = findViewById(R.id.button);
 
-        dbHandler = new DBHandler(getBaseContext());
+        dbHandler = new DBHandler(this);
         setup();
     }
 
