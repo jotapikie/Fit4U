@@ -59,12 +59,12 @@
             android:layout_marginBottom="25dp">
 
             <TextView
+                android:id="@+id/start_training_button"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
                 android:background="@drawable/box" />
 
             <TextView
-                android:id="@+id/start_training_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -84,12 +84,12 @@
             android:layout_toEndOf="@id/TV1">
 
             <TextView
+                android:id="@+id/see_nutritional_button"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
                 android:background="@drawable/box" />
 
             <TextView
-                android:id="@+id/see_nutritional_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -110,12 +110,12 @@
             android:layout_marginEnd="25dp">
 
             <TextView
+                android:id="@+id/see_training_button"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
                 android:background="@drawable/box" />
 
             <TextView
-                android:id="@+id/see_training_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

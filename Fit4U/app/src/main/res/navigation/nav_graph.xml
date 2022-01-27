@@ -68,7 +68,7 @@
 
     <fragment
         android:id="@+id/MainMenuPTFragment"
-        android:name="com.example.fit4u.MainMenuPT"
+        android:name="com.example.fit4u.personalTrainer.MainMenuPT"
         android:label="home"
         tools:layout="@layout/activity_main_menu_pt">
     </fragment>

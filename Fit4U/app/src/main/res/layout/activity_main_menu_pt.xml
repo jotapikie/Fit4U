@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".MainMenuPT">
+    tools:context=".personalTrainer.MainMenuPT">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -38,6 +38,7 @@
             android:textSize="25dp" />
 
         <TextView
+            android:id="@+id/usernamePT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ivLogo"
@@ -58,6 +59,7 @@
             android:layout_marginBottom="25dp">
 
             <TextView
+                android:id="@+id/create_training_plan"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
                 android:background="@drawable/box" />
@@ -82,6 +84,7 @@
             android:layout_toEndOf="@id/TV1">
 
             <TextView
+                android:id="@+id/create_nutritional_plan"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
                 android:background="@drawable/box" />
@@ -107,6 +110,7 @@
             android:layout_marginEnd="25dp">
 
             <TextView
+                android:id="@+id/anex_user"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
                 android:background="@drawable/box" />
@@ -131,6 +135,7 @@
             android:layout_toEndOf="@id/TV3">
 
             <TextView
+                android:id="@+id/change_training_plan"
                 android:layout_width="145dp"
                 android:layout_height="145dp"
                 android:background="@drawable/box" />
