@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.LinkedHashMap;
 
 import domain.Exercice;
+import domain.MealDay;
 import domain.Training;
 import domain.User;
 
@@ -73,7 +74,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String INGREDIENT_MEALID_COL = "mealId";
     private static final String INGREDIENT_CALORIES_COL = "calories";
 
-    private static SQLiteDatabase MyDB ;
+    private static SQLiteDatabase MyDB;
 
 
     // creating a constructor for our database handler.
@@ -235,7 +236,7 @@ public class DBHandler extends SQLiteOpenHelper {
                     + " E inner join " + TRAININGPLAN_TABLE + " TP on E." + EXERCISE_TRAININGPLANID_COL + " = TP." + TRAININGPLAN_ID_COL + " WHERE E."
                     + EXERCISE_DAYOFWEEK_COL + " = '" + dayOfWeek + "' and TP." + TRAININGPLAN_CLIENTID_COL + " = '" + clientID + "';", null);
 
-            if (c.getCount()>0) {
+            if (c.getCount() > 0) {
                 int exerciseReps = c.getColumnIndex(EXERCISE_REPS_COL);
                 int exerciseName = c.getColumnIndex(EXERCISE_NAME_COL);
                 int exerciseCaloriesPerMin = c.getColumnIndex(EXERCISE_CALORIESPERMIN_COL);
@@ -246,11 +247,11 @@ public class DBHandler extends SQLiteOpenHelper {
                 }
 
                 return new Training(trainingExs);
-            }else{
+            } else {
                 c.close();
                 return null;
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
 
@@ -261,7 +262,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public User checkLogin(String username, String password) {
         try {
-            MyDB= this.getReadableDatabase();
+            MyDB = this.getReadableDatabase();
             Cursor c = MyDB.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + USER_USERNAME_COL + " = '" + username + "' AND " + USER_PASSWORD_COL + " = '" + password + "'", null);
             if (c.getCount() > 0) {
                 c.moveToNext();
@@ -270,7 +271,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 int type = c.getColumnIndex(USER_TYPE_COL);
 
                 User result = new User(c.getInt(key), c.getString(s), c.getInt(type));
-                System.out.println("\n\n\n\n\nResult "+result.getUsername()+ " \nFULL NAME "+result.getUsername());
+                System.out.println("\n\n\n\n\nResult " + result.getUsername() + " \nFULL NAME " + result.getUsername());
                 c.close();
 
                 return result;
@@ -284,6 +285,10 @@ public class DBHandler extends SQLiteOpenHelper {
             return null;
         }
     }
+
+    //public MealDay getMealDay(int clientID, int dayOfWeek) {
+    //}
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -300,4 +305,5 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
+
 

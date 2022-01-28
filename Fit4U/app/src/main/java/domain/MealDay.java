@@ -15,6 +15,11 @@ public class MealDay {
         setTotalCaloriesDay(plan);
     }
 
+
+    public LinkedHashMap<Meal, Float> getPlan() {
+        return plan;
+    }
+
     private void setTotalCaloriesDay(LinkedHashMap<Meal, Float> plan) {
         int totalCalories=0;
         for ( Map.Entry<Meal,Float> entry: plan.entrySet()) {
