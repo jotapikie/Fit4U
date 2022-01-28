@@ -8,8 +8,7 @@ public class Meal {
     private HashMap<Ingredient, Integer> ingredients;
     private MealType type;
 
-    public Meal(int cookingTime, String recipe, HashMap<Ingredient, Integer> ingredients, MealType type) {
-        this.cookingTime = cookingTime;
+    public Meal(String recipe, HashMap<Ingredient, Integer> ingredients) {
         this.recipe = recipe;
         this.ingredients = ingredients;
         this.type = type;

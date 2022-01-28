@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.LinkedHashMap;
 
 import domain.Exercice;
+import domain.Meal;
 import domain.MealDay;
 import domain.Training;
 import domain.User;
@@ -285,9 +286,6 @@ public class DBHandler extends SQLiteOpenHelper {
             return null;
         }
     }
-
-    //public MealDay getMealDay(int clientID, int dayOfWeek) {
-    //}
 
 
     @Override

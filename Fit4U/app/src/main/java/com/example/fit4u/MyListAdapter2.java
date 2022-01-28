@@ -35,8 +35,8 @@ public class MyListAdapter2 extends RecyclerView.Adapter<MyListAdapter2.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         final MyListData myListData = listdata[position];
         holder.textView.setText(listdata[position].getDescription());
-        holder.timeView.setText(listdata[position].getTime());
-        holder.calsView.setText(listdata[position].getCalories());
+        holder.calsView.setText(listdata[position].getTime()+ "min");
+        holder.timeView.setText(listdata[position].getCalories()+ "kcal");
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
