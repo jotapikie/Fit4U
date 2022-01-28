@@ -37,7 +37,7 @@ public class StartTraningTimerActivity extends AppCompatActivity {
     private Training training;
     private TextView congratzView;
     private Semaphore semaphore;
-    private Semaphore congratzSem;
+    private int congratzSem=0;
 
     private MediaPlayer nextExerciseSound;
     private MediaPlayer congratz;
@@ -52,13 +52,6 @@ public class StartTraningTimerActivity extends AppCompatActivity {
         exerciseName = findViewById((R.id.exerciseName1));
         congratzView = findViewById(R.id.congratz);
         semaphore = new Semaphore(1, true);
-        congratzSem = new Semaphore(1, true);
-        try {
-            congratzSem.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         try {
             setup();
         } catch (InterruptedException e) {
@@ -74,67 +67,79 @@ public class StartTraningTimerActivity extends AppCompatActivity {
         training = new Training((HashMap<Exercice, Integer>) bundle.getSerializable("training"));
         String caloriesMessage = "Congratulations!\n\nYou lost " + training.getTotalCaloriesBurned() + " calories today!";
         congratzView.setText(caloriesMessage);
-        new Thread() {
-            public void run(){
-                for(Map.Entry<Exercice, Integer> entry :training.getPlan().entrySet()){
-                    new Thread() {
-                        public void run() {
-                            mTimeLeftInMillis = entry.getValue() * 60000;
-                            String exName = entry.getKey().getName();
-                            exerciseName.setText(exName);
-                            int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
-                            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-                            timerView.setText(timeLeftFormatted);
-                            nextExerciseSound.start();
-                            try {
-                                semaphore.acquire();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            startStopButton.setOnClickListener(view -> {
-                                if (running) {
-                                    startTimer();
-                                } else {
-                                    stopTimer();
-                                }
-                            });
-                            congratz.start();
-                            congratzView.setVisibility(View.VISIBLE);
-                        }
-
-                        public synchronized void startTimer() {
-                            chronometer = new CountDownTimer(mTimeLeftInMillis, 1000) {
-                                @Override
-                                public void onTick(long l) {
-                                    mTimeLeftInMillis = l;
-                                    updateCountDownText();
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    semaphore.release();
-                                }
-                            };
-                            running = false;
-                            startStopButton.setText("Pause");
-                        }
-
-
-                        private synchronized void stopTimer() {
-                            chronometer.cancel();
-                            running = true;
-                            startStopButton.setText("Resume");
-                        }
-
-                        private synchronized void updateCountDownText() {
-                            int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
-                            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-                            timerView.setText(timeLeftFormatted);
-                        }
-                    }.start();
+        for (Map.Entry<Exercice, Integer> entry : training.getPlan().entrySet()) {
+            new Thread() {
+                public void run() {
+                    try {
+                        semaphore.acquire();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    mTimeLeftInMillis = entry.getValue() * 60000;
+                    String exName = entry.getKey().getName();
+                    exerciseName.setText(exName);
+                    int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+                    int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+                    String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+                    timerView.setText(timeLeftFormatted);
+                    nextExerciseSound.start();
                 }
-            }}.start();
+            }.start();
+        }
+        new Thread() {
+            public void run() {
+                while (congratzSem < training.getPlan().size()) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                congratz.start();
+                congratzView.setVisibility(View.VISIBLE);
+
+            }
+
+        }.start();
+        startStopButton.setOnClickListener(view -> {
+            if (running) {
+                running=false;
+                startTimer();
+            } else {
+                stopTimer();
+            }
+        });
+
     }
+
+
+        public synchronized void startTimer() {
+            chronometer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+                @Override
+                public void onTick(long l) {
+                    mTimeLeftInMillis = l;
+                    updateCountDownText();
+                }
+
+                @Override
+                public void onFinish() {
+                    semaphore.release();
+                    congratzSem+=1;
+                }
+            };
+            startStopButton.setText("Pause");
+        }
+
+        private synchronized void stopTimer() {
+            chronometer.cancel();
+            running = true;
+            startStopButton.setText("Resume");
+        }
+
+        private synchronized void updateCountDownText() {
+            int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+            String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+            timerView.setText(timeLeftFormatted);
+        }
 }

@@ -1,6 +1,7 @@
 package com.example.fit4u.client;
 
 import android.os.Bundle;
+import android.os.Trace;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,12 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fit4u.*;
 
-public class SeeWeekTrainingActivity extends AppCompatActivity {
+import domain.TrainingPlan;
 
+public class SeeWeekTrainingActivity extends AppCompatActivity {
+    DBHandler dbHandler = new DBHandler(getBaseContext());
+    public int clientID;
+    public TrainingPlan trainingPlan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_training);
+        Bundle bundle = getIntent().getExtras();
+        clientID = bundle.getInt("clientID");
+        //trainingPlan= dbHandler.getTrainingPlan(clientID);
         MyListData[] myListData = new MyListData[]{
                 new MyListData("Ex1"),
                 new MyListData("Ex2"),
