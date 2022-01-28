@@ -16,6 +16,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="package.StartTraningTimerActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -24,6 +25,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="package.MainMenuPT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -32,6 +34,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="package.MainMenuUser" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -40,6 +43,16 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="package.SeeNutritionalPlanActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".personalTrainer.CreateTrainingPlanActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="package.CreateTrainingPlanActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -48,6 +61,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="package.SeeWeekTrainingActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -56,12 +70,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="package.StartNewTrainingActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.fit4u.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
