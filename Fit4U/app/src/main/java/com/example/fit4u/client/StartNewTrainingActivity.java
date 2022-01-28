@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +20,7 @@ import com.example.fit4u.MyListAdapter;
 import com.example.fit4u.MyListData;
 import com.example.fit4u.R;
 
+import domain.Exercice;
 import domain.Training;
 
 public class StartNewTrainingActivity extends AppCompatActivity {
@@ -59,15 +63,11 @@ public class StartNewTrainingActivity extends AppCompatActivity {
             startActivity(intentTraining);
         });
 
-        MyListData[] myListData = new MyListData[]{
-                new MyListData("Ex1"),
-                new MyListData("Ex1"),
-                new MyListData("Ex3"),
-                new MyListData("Ex4"),
-                new MyListData("Ex5"),
-                new MyListData("Ex6"),
-                new MyListData("Ex7"),
-        };
+        List<MyListData> myListData = new ArrayList<>();
+        for(Map.Entry<Exercice, Integer> e: training.getPlan().entrySet()){
+            int i= (int) (e.getValue()*e.getKey().getCaloriesBurnPerMin());
+            myListData.add(new MyListData(e.getKey().getName(), e.getValue().toString(), String.valueOf(i)));
+        }
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         MyListAdapter adapter = new MyListAdapter(myListData);

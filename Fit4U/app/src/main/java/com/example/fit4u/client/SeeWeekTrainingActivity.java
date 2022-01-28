@@ -9,28 +9,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fit4u.*;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
+import domain.Exercice;
+import domain.Training;
 import domain.TrainingPlan;
 
 public class SeeWeekTrainingActivity extends AppCompatActivity {
     DBHandler dbHandler = new DBHandler(getBaseContext());
+    Calendar calendar= Calendar.getInstance();
+    int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
     public int clientID;
-    public TrainingPlan trainingPlan;
+    public Training trainingPlan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_training);
         Bundle bundle = getIntent().getExtras();
         clientID = bundle.getInt("clientID");
-        //trainingPlan= dbHandler.getTrainingPlan(clientID);
-        MyListData[] myListData = new MyListData[]{
-                new MyListData("Ex1"),
-                new MyListData("Ex2"),
-                new MyListData("Ex3"),
-                new MyListData("Ex4"),
-                new MyListData("Ex5"),
-                new MyListData("Ex6"),
-                new MyListData("Ex7"),
-        };
+        trainingPlan= dbHandler.getTraining(clientID, dayOfWeek);
+        List<MyListData> myListData = new ArrayList<>();
+        for(Map.Entry<Exercice, Integer> e: trainingPlan.getPlan().entrySet()){
+                    int i= (int) (e.getValue()*e.getKey().getCaloriesBurnPerMin());
+                    myListData.add(new MyListData(e.getKey().getName(), e.getValue().toString(), String.valueOf(i)));
+                }
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         MyListAdapter2 adapter = new MyListAdapter2(myListData);

@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 
 public class MyListAdapter2 extends RecyclerView.Adapter<MyListAdapter2.ViewHolder> {
 
@@ -17,8 +19,8 @@ public class MyListAdapter2 extends RecyclerView.Adapter<MyListAdapter2.ViewHold
 
     RecyclerView recyclerView;
 
-    public MyListAdapter2(MyListData[] listdata) {
-        this.listdata = listdata;
+    public MyListAdapter2(List<MyListData> listdata) {
+        this.listdata = listdata.toArray(new MyListData[0]);
     }
 
     @Override
@@ -33,6 +35,8 @@ public class MyListAdapter2 extends RecyclerView.Adapter<MyListAdapter2.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         final MyListData myListData = listdata[position];
         holder.textView.setText(listdata[position].getDescription());
+        holder.timeView.setText(listdata[position].getTime());
+        holder.calsView.setText(listdata[position].getCalories());
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,11 +54,15 @@ public class MyListAdapter2 extends RecyclerView.Adapter<MyListAdapter2.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
         public TextView textView;
+        public TextView calsView;
+        public TextView timeView;
         public RelativeLayout relativeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             this.textView = (TextView) itemView.findViewById(R.id.textView);
+            this.calsView = (TextView) itemView.findViewById(R.id.tempo4);
+            this.timeView = (TextView) itemView.findViewById(R.id.calories4);
             relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relativeLayout);
         }
     }

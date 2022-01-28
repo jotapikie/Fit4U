@@ -12,7 +12,9 @@ import com.example.fit4u.R;
 
 import java.util.Calendar;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
+import domain.Ingredient;
 import domain.Meal;
 import domain.MealDay;
 import domain.NutritionalPlan;
@@ -26,6 +28,13 @@ public class SeeNutritionalPlanActivity extends AppCompatActivity {
     private TextView kcalLunch;
     private TextView kcalAfternoonSnack;
     private TextView kcalDinner;
+
+    private TextView breakfastText;
+    private TextView morningSnackText;
+    private TextView lunchText;
+    private TextView afternoonSnackText;
+    private TextView dinnerText;
+
     private Meal breakFast;
     private Meal morningSnack;
     private Meal lunch;
@@ -45,6 +54,12 @@ public class SeeNutritionalPlanActivity extends AppCompatActivity {
         kcalLunch= findViewById(R.id.kcalLunch);
         kcalAfternoonSnack= findViewById(R.id.kcalAfternoonSnack);
         kcalDinner= findViewById(R.id.kcalDinner);
+
+        breakfastText= findViewById(R.id.breakfastTXT);
+        morningSnackText= findViewById(R.id.snack1TXT);
+        lunchText= findViewById(R.id.lunchTXT);
+        afternoonSnackText= findViewById(R.id.snack2TXT);
+        dinnerText= findViewById(R.id.dinnerTXT);
 
         setup();
 
@@ -67,6 +82,38 @@ public class SeeNutritionalPlanActivity extends AppCompatActivity {
         kcalLunch.setText((Integer) mealList.values().iterator().next());
         kcalAfternoonSnack.setText((Integer) mealList.values().iterator().next());
         kcalDinner.setText((Integer) mealList.values().iterator().next());
+
+        String breakFastString= new String();
+        for (Map.Entry<Ingredient, Integer> entry: breakFast.getIngredients().entrySet()){
+            breakFastString= breakFastString+"\n"+ entry.getKey().getName()+ " -"+ entry.getValue()+"g";
+        }
+        breakfastText.setText(breakFastString);
+
+        String snack1String= new String();
+        for (Map.Entry<Ingredient, Integer> entry: morningSnack.getIngredients().entrySet()){
+            snack1String= snack1String+"\n"+ entry.getKey().getName()+ " -"+ entry.getValue()+"g";
+        }
+        morningSnackText.setText(snack1String);
+
+        String lunchString= new String();
+        for (Map.Entry<Ingredient, Integer> entry: lunch.getIngredients().entrySet()){
+            lunchString= lunch+"\n"+ entry.getKey().getName()+ " -"+ entry.getValue()+"g";
+        }
+        lunchText.setText(lunchString);
+
+        String snack2String= new String();
+        for (Map.Entry<Ingredient, Integer> entry: noonSnack.getIngredients().entrySet()){
+            snack2String= snack2String+"\n"+ entry.getKey().getName()+ " -"+ entry.getValue()+"g";
+        }
+        afternoonSnackText.setText(snack2String);
+
+        String dinnerString= new String();
+        for (Map.Entry<Ingredient, Integer> entry: dinner.getIngredients().entrySet()){
+            dinnerString= dinnerString+"\n"+ entry.getKey().getName()+ " -"+ entry.getValue()+"g";
+        }
+        dinnerText.setText(dinnerString);
+
+
 
 
     }

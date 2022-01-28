@@ -36,22 +36,19 @@ public class StartTraningTimerActivity extends AppCompatActivity {
     private boolean running = true;
     private Training training;
     private TextView congratzView;
-    private Semaphore semaphore;
-    private int congratzSem=0;
 
     private MediaPlayer nextExerciseSound;
     private MediaPlayer congratz;
 
 
     @Override
-    protected synchronized void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_traning);
         timerView = findViewById(R.id.chronometer);
         startStopButton = findViewById(R.id.startStopButton);
         exerciseName = findViewById((R.id.exerciseName1));
         congratzView = findViewById(R.id.congratz);
-        semaphore = new Semaphore(1, true);
         try {
             setup();
         } catch (InterruptedException e) {
@@ -68,39 +65,16 @@ public class StartTraningTimerActivity extends AppCompatActivity {
         String caloriesMessage = "Congratulations!\n\nYou lost " + training.getTotalCaloriesBurned() + " calories today!";
         congratzView.setText(caloriesMessage);
         for (Map.Entry<Exercice, Integer> entry : training.getPlan().entrySet()) {
-            new Thread() {
-                public void run() {
-                    try {
-                        semaphore.acquire();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    mTimeLeftInMillis = entry.getValue() * 60000;
+                    mTimeLeftInMillis += entry.getValue() * 60000;
                     String exName = entry.getKey().getName();
                     exerciseName.setText(exName);
-                    int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-                    int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
-                    String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-                    timerView.setText(timeLeftFormatted);
                     nextExerciseSound.start();
                 }
-            }.start();
-        }
-        new Thread() {
-            public void run() {
-                while (congratzSem < training.getPlan().size()) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                congratz.start();
-                congratzView.setVisibility(View.VISIBLE);
+        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        timerView.setText(timeLeftFormatted);
 
-            }
-
-        }.start();
         startStopButton.setOnClickListener(view -> {
             if (running) {
                 running=false;
@@ -123,20 +97,20 @@ public class StartTraningTimerActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    semaphore.release();
-                    congratzSem+=1;
+                    congratz.start();
+                    congratzView.setVisibility(View.VISIBLE);
                 }
-            };
+            }.start();
             startStopButton.setText("Pause");
         }
 
-        private synchronized void stopTimer() {
+        private void stopTimer() {
             chronometer.cancel();
             running = true;
             startStopButton.setText("Resume");
         }
 
-        private synchronized void updateCountDownText() {
+        private void updateCountDownText() {
             int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
             int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
             String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);

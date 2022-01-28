@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
 
@@ -17,8 +19,8 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     RecyclerView recyclerView;
 
-    public MyListAdapter(MyListData[] listdata) {
-        this.listdata = listdata;
+    public MyListAdapter(List<MyListData> listdata) {
+        this.listdata = listdata.toArray(new MyListData[0]);
     }
 
     @Override

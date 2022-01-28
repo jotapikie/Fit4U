@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".client.ShowTrainingBeforeStartActivity">
+    tools:context=".client.SeeWeekTrainingActivity">
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -27,7 +27,7 @@
                     android:layout_marginTop="59dp"
                     android:layout_marginEnd="0dp"
                     android:fontFamily="@font/cabin_bold"
-                    android:text="Your last training:"
+                    android:text="Your training:"
                     android:textAlignment="center"
                     android:textSize="30dp" />
 

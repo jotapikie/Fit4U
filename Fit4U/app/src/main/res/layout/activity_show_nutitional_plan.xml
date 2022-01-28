@@ -50,7 +50,7 @@
                     android:background="@drawable/box_new">
 
                     <TextView
-                        android:id="@+id/ex1"
+                        android:id="@+id/breakfastTXT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -70,7 +70,7 @@
                         android:layout_height="80dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/ex1"
+                        android:layout_toEndOf="@id/breakfastTXT"
                         android:src="@drawable/breakfast" />
 
                     <TextView
@@ -82,7 +82,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_toRightOf="@id/ex1"
+                        android:layout_toRightOf="@id/breakfastTXT"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
@@ -100,7 +100,7 @@
                     android:background="@drawable/box_new">
 
                     <TextView
-                        android:id="@+id/ex2"
+                        android:id="@+id/snack1TXT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -120,7 +120,7 @@
                         android:layout_height="80dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/ex2"
+                        android:layout_toEndOf="@id/snack1TXT"
                         android:src="@drawable/snack" />
 
                     <TextView
@@ -132,7 +132,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_toRightOf="@id/ex2"
+                        android:layout_toRightOf="@id/snack1TXT"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
@@ -150,7 +150,7 @@
                     android:background="@drawable/box_new">
 
                     <TextView
-                        android:id="@+id/ex3"
+                        android:id="@+id/lunchTXT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -170,7 +170,7 @@
                         android:layout_height="80dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/ex3"
+                        android:layout_toEndOf="@id/lunchTXT"
                         android:src="@drawable/refeicao" />
 
                     <TextView
@@ -182,7 +182,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_toRightOf="@id/ex3"
+                        android:layout_toRightOf="@id/lunchTXT"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
@@ -200,7 +200,7 @@
                     android:background="@drawable/box_new">
 
                     <TextView
-                        android:id="@+id/ex4"
+                        android:id="@+id/snack2TXT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -220,7 +220,7 @@
                         android:layout_height="80dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/ex4"
+                        android:layout_toEndOf="@id/snack2TXT"
                         android:src="@drawable/snack" />
 
                     <TextView
@@ -232,7 +232,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_toRightOf="@id/ex4"
+                        android:layout_toRightOf="@id/snack2TXT"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
@@ -250,7 +250,7 @@
                     android:background="@drawable/box_new">
 
                     <TextView
-                        android:id="@+id/ex5"
+                        android:id="@+id/dinnerTXT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -270,7 +270,7 @@
                         android:layout_height="80dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/ex5"
+                        android:layout_toEndOf="@id/dinnerTXT"
                         android:src="@drawable/refeicao" />
 
                     <TextView
@@ -282,7 +282,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="100dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_toRightOf="@id/ex5"
+                        android:layout_toRightOf="@id/dinnerTXT"
                         android:fontFamily="@font/roboto_condensed"
                         android:gravity="center"
                         android:text="350 KcAL"
